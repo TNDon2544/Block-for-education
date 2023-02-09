@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Login() {
+export default function Register() {
   return (
     <section style={{ backgroundColor: "#508bfc", height: "100%" }}>
       <div className="container py-5 h-100">
@@ -11,13 +11,23 @@ export default function Login() {
               style={{ borderRadius: "1rem" }}
             >
               <div className="card-body p-5 text-center">
-                <h3 className="mb-4">Sign in</h3>
+                <h3 className="mb-4">Register</h3>
+
+                <div className="form-outline mb-4">
+                  <input
+                    type="name"
+                    id="typeNameX-2"
+                    className="form-control"
+                    style={{ width: "350px" }}
+                    placeholder="Name"
+                  />
+                </div>
 
                 <div className="form-outline mb-4">
                   <input
                     type="email"
                     id="typeEmailX-2"
-                    className="form-control form-control-lg"
+                    className="form-control"
                     style={{ width: "350px" }}
                     placeholder="Email"
                   />
@@ -27,28 +37,20 @@ export default function Login() {
                   <input
                     type="password"
                     id="typePasswordX-2"
-                    className="form-control form-control-lg"
+                    className="form-control "
                     style={{ width: "350px" }}
                     placeholder="Password"
                   />
                 </div>
 
-                <div className="d-flex justify-content-around align-items-center mb-4">
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="form1Example3"
-                    />
-                    <label className="form-check-label" htmlFor="form1Example3">
-                      {" "}
-                      Remember me{" "}
-                    </label>
-                  </div>
-                  <a href="/forgotpass" style={{ textDecoration: "none" }}>
-                    Forgot password?
-                  </a>
+                <div className="form-outline mb-4">
+                  <input
+                    type="password"
+                    id="typePasswordX-2"
+                    className="form-control "
+                    style={{ width: "350px" }}
+                    placeholder="Repeat password"
+                  />
                 </div>
 
                 <button
@@ -56,19 +58,8 @@ export default function Login() {
                   type="submit"
                   style={{ width: "350px" }}
                 >
-                  Login
+                  SIGN UP
                 </button>
-
-                <p className="small mt-1 pt-1">
-                  Don't have an account?{" "}
-                  <a
-                    href="/register"
-                    className="link-danger"
-                    style={{ textDecoration: "none" }}
-                  >
-                    Register
-                  </a>
-                </p>
 
                 <div className="d-flex align-items-center my-4">
                   <div
@@ -87,14 +78,14 @@ export default function Login() {
                   style={{ backgroundColor: "#dd4b39", width: "350px" }}
                   type="submit"
                 >
-                  <i className="bi bi-google"> Sign in with google</i>
+                  <i className="bi bi-google"> SIGN IN WITH GOOGLE </i>
                 </button>
                 <button
                   className="btn btn-lg btn-block btn-primary border-0"
                   style={{ backgroundColor: "#3b5998", width: "350px" }}
                   type="submit"
                 >
-                  <i className="bi bi-facebook"> Sign in with facebook</i>
+                  <i className="bi bi-facebook"> SIGN IN WITH FACEBOOK</i>
                 </button>
               </div>
             </div>

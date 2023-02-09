@@ -3,6 +3,8 @@ import Navbar from "./Components/Navbar";
 import Post from "./Components/Post";
 import Search from "./Components/Search";
 import Profile from "./Components/Profile";
+import Login from "./Components/Login";
+import Register from "./Components/Register";
 
 function App() {
   let component;
@@ -25,8 +27,12 @@ function App() {
   }
   return (
     <div>
+      <Login />
+      {/*
+      <Register/>
       <Navbar />
       {component}
+      */}
     </div>
   );
 }
