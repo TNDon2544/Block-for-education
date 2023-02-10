@@ -1,0 +1,49 @@
+.btn-google {
+  background-color: #dd4b39;
+  width: 350px;
+}
+.btn-google:hover {
+  background-color: #dd4b39;
+  transform: scale(1.01);
+}
+
+.btn-facebook {
+  background-color: #3b5998;
+  width: 350px;
+}
+
+.btn-facebook:hover {
+  background-color: #3b5998;
+  transform: scale(1.01);
+}
+
+.btn-login {
+  width: 350px;
+}
+
+.btn-login:hover {
+  background-color: #007bff;
+  transform: scale(1.01);
+}
+
+.line-or {
+  border-top: 1px solid #e9e9e9;
+  width: 40%;
+}
+
+.input {
+  width: 350px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.section {
+  background-color: #508bfc;
+  height: 100vh;
+}
+
+.card-border {
+  border-radius: 1rem;
+}

@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   return (
-    <section style={{ backgroundColor: "#508bfc", height: "100%" }}>
+    <section style={{ backgroundColor: "#508bfc", height: "100vh" }}>
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -11,9 +12,9 @@ export default function Register() {
               style={{ borderRadius: "1rem" }}
             >
               <div className="card-body p-5 text-center">
-                <h3 className="mb-4">Register</h3>
+                <h3 className="mb-5">Register</h3>
 
-                <div className="form-outline mb-4">
+                <div className="d-flex justify-content-center form-outline mb-4">
                   <input
                     type="name"
                     id="typeNameX-2"
@@ -23,7 +24,7 @@ export default function Register() {
                   />
                 </div>
 
-                <div className="form-outline mb-4">
+                <div className="d-flex justify-content-center form-outline mb-4">
                   <input
                     type="email"
                     id="typeEmailX-2"
@@ -33,7 +34,7 @@ export default function Register() {
                   />
                 </div>
 
-                <div className="form-outline mb-4">
+                <div className="d-flex justify-content-center form-outline mb-4">
                   <input
                     type="password"
                     id="typePasswordX-2"
@@ -43,7 +44,7 @@ export default function Register() {
                   />
                 </div>
 
-                <div className="form-outline mb-4">
+                <div className="d-flex justify-content-center form-outline mb-4">
                   <input
                     type="password"
                     id="typePasswordX-2"
@@ -60,6 +61,17 @@ export default function Register() {
                 >
                   SIGN UP
                 </button>
+
+                <p className="small mt-1 pt-1">
+                  Back to page{" "}
+                  <Link
+                    to="/login"
+                    className="link-danger"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Login
+                  </Link>
+                </p>
 
                 <div className="d-flex align-items-center my-4">
                   <div
