@@ -3,12 +3,8 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const handleClick = () => {
-    window.location = "/search";
-  };
-
   return (
-    <nav className="navbar navbar-expand-lg bg-primary">
+    <nav className="navbar navbar-expand-lg bg-primary nav-position">
       <div className="container-fluid">
         <Link className="navbar-brand mb-0 h1 text-white" to="/home">
           Block for education
@@ -47,14 +43,15 @@ export default function Navbar() {
             </li>
           </ul>
           <div className="search">
-            <button
-              className="btn btn-outline-light "
-              style={{ width: "200px" }}
-              type="button"
-              onClick={handleClick}
-            >
-              <i className="bi bi-search"></i> Search
-            </button>
+            <Link to="/search">
+              <button
+                className="btn btn-outline-light "
+                style={{ width: "200px" }}
+                type="button"
+              >
+                <i className="bi bi-search"></i> Search
+              </button>
+            </Link>
           </div>
           <div className="">
             <Link className="nav-link text-white" to="/logout">

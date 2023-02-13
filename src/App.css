@@ -1,4 +1,4 @@
-.backgroundColor {
+.home-backgroundColor {
   height: 100;
   background: #f5f7f8;
   font-family: "Roboto", sans-serif;
@@ -6,12 +6,12 @@
   padding: 20px 0;
 }
 
-.AllbackgroundColor {
+.home-AllbackgroundColor {
   height: 100vh;
   background: #f5f7f8;
 }
 
-.band {
+.home-band {
   width: 90%;
   max-width: 1240px;
   margin: 0 auto;
@@ -22,13 +22,13 @@
 }
 
 @media only screen and (min-width: 500px) {
-  .band {
+  .home-band {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media only screen and (min-width: 850px) {
-  .band {
+  .home-band {
     grid-template-columns: repeat(3, 1fr);
   }
 }

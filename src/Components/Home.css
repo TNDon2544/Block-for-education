@@ -7,48 +7,55 @@
   text-decoration: none;
   color: #444;
   position: relative;
-  top: 0;
+  top: 60px;
   transition: all 0.1s ease-in;
   border-radius: 1rem;
 }
 
 .card:hover {
-  top: -2px;
+  top: 58px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
 }
 
 .card article {
-    padding: 20px;
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
-    flex-direction: column;
+  padding: 20px;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .card .thumb {
-    padding-bottom: 70%;
-    background-size: cover;
-    background-position: center;
-    border-top-right-radius: 1rem;
-    border-top-left-radius: 1rem;
+  padding-bottom: 70%;
+  background-size: cover;
+  background-position: center;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
 }
 
 .card p {
-    flex: 1;
-    line-height: 1.4;
+  flex: 1;
+  line-height: 1.4;
 }
 
 .title {
-    font-size: 20px;
-    margin: 0;
-    color: #333;
+  font-size: 20px;
+  margin: 0;
+  color: #333;
 }
 
-.card span{
-    font-size: 12px;
-    font-weight: bold;
-    color: #999;
-    text-transform:uppercase ;
-    letter-spacing: .05em;
-    margin: 2em 0 0 0;
+.card span {
+  font-size: 12px;
+  font-weight: bold;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 2em 0 0 0;
+}
+
+.icon-heart {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 15px;
 }

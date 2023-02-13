@@ -8,12 +8,36 @@ import Register from "./Components/Register";
 import { Route, Routes } from "react-router-dom";
 import posts from "./Data/DataPosts";
 import "./App.css";
+import { useState } from "react";
+import PostPopup from "./Components/PostPopup";
 function App() {
+  const [selectedPost, setSelectedPost] = useState(null);
+
+  if (selectedPost) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
+  function onPostOpenClick(post) {
+    setSelectedPost(post);
+  }
+
+  function onPostCloseClick() {
+    setSelectedPost(null);
+  }
+
   const postElements = posts.map((post, index) => {
-    return <Home key={index} post={post} />;
+    return <Home key={index} post={post} onPostClick={onPostOpenClick} />;
   });
+
+  let postPopup = null;
+  if (!!selectedPost) {
+    postPopup = <PostPopup post={selectedPost} onBgClick={onPostCloseClick} />;
+  }
+
   return (
-    <div className="AllbackgroundColor">
+    <div>
       {/* */}
       <Navbar />
 
@@ -24,8 +48,11 @@ function App() {
         <Route
           path="/home"
           element={
-            <div className="backgroundColor">
-              <div className="band">{postElements}</div>
+            <div className="home-AllbackgroundColor">
+              <div className="home-backgroundColor">
+                {postPopup}
+                <div className="home-band">{postElements}</div>
+              </div>
             </div>
           }
         />

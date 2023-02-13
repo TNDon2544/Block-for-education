@@ -1,0 +1,47 @@
+.post-popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.post-popup-bg {
+  background-color: rgba(0, 0, 0, 0.803);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.post-popup-content {
+  position: relative;
+  max-width: 1200px;
+  background-color: black;
+  margin-top: auto;
+  margin-bottom: auto;
+  overflow: auto;
+  height: 90vh;
+}
+
+.post-popup-content img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 120px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post-popup-content h4 {
+  color: white;
+  text-align: center;
+}
+
+.post-popup-content p {
+  color: white;
+}
