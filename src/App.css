@@ -21,14 +21,18 @@
   grid-gap: 20px;
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 600px) {
   .home-band {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media only screen and (min-width: 850px) {
+@media only screen and (min-width: 890px) {
   .home-band {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.search-bt {
+  padding-top: 120px;
 }

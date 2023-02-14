@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Home.css";
 export default function Home(props) {
   const { post, onPostClick } = props;
   return (
-    <Link className="card" onClick={( ) => {onPostClick(post)}}>
+    <div className="card" onClick={( ) => {onPostClick(post)}}>
       <div
         className="thumb"
         style={{ backgroundImage: `url(${post.thumbUrl})` }}
@@ -16,6 +15,6 @@ export default function Home(props) {
           <i className="bi bi-suit-heart icon-heart">&nbsp;{post.like}</i>
         </span>
       </article>
-    </Link>
+    </div>
   );
 }

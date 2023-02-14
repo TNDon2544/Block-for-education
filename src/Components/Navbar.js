@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Search from "./Search";
 import "./Navbar.css";
 
 export default function Navbar() {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  let search = null;
+  if (isSearchOpen) {
+    search = <Search onBgClick={() => setIsSearchOpen(false)} />;
+  }
+
   return (
     <nav className="navbar navbar-expand-lg bg-primary nav-position">
       <div className="container-fluid">
@@ -43,15 +51,14 @@ export default function Navbar() {
             </li>
           </ul>
           <div className="search">
-            <Link to="/search">
-              <button
-                className="btn btn-outline-light "
-                style={{ width: "200px" }}
-                type="button"
-              >
-                <i className="bi bi-search"></i> Search
-              </button>
-            </Link>
+            <button
+              className="btn btn-outline-light "
+              style={{ width: "200px" }}
+              type="button"
+              onClick={() => setIsSearchOpen(true)}
+            >
+              <i className="bi bi-search"></i> Search
+            </button>
           </div>
           <div className="">
             <Link className="nav-link text-white" to="/logout">
@@ -60,6 +67,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      {search}
     </nav>
   );
 }
