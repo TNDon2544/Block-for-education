@@ -1,3 +1,40 @@
+.backgroundColor {
+  position: relative;
+  top: 55px;
+  height: 100;
+  background: #f5f7f8;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: 20px 0;
+}
+
+.AllbackgroundColor {
+  height: 100vh;
+  background: #f5f7f8;
+}
+
+.band {
+  width: 90%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+}
+
+@media only screen and (min-width: 600px) {
+  .band {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 890px) {
+  .band {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .card {
   min-height: 100%;
   background: white;
@@ -6,14 +43,13 @@
   flex-direction: column;
   text-decoration: none;
   color: #444;
-  position: relative;
-  top: 60px;
+
   transition: all 0.1s ease-in;
   border-radius: 1rem;
 }
 
 .card:hover {
-  top: 58px;
+  top: -2px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
 }
 

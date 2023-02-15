@@ -1,38 +1,3 @@
-.home-backgroundColor {
-  height: 100;
-  background: #f5f7f8;
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  padding: 20px 0;
-}
 
-.home-AllbackgroundColor {
-  height: 100vh;
-  background: #f5f7f8;
-}
 
-.home-band {
-  width: 90%;
-  max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  grid-gap: 20px;
-}
 
-@media only screen and (min-width: 600px) {
-  .home-band {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media only screen and (min-width: 890px) {
-  .home-band {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.search-bt {
-  padding-top: 120px;
-}
