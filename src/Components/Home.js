@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import posts from "../Data/DataPosts";
 import "./Home.css";
 export default function Home() {
@@ -6,8 +7,12 @@ export default function Home() {
     <div className="AllbackgroundColor">
       <div className="backgroundColor">
         <div className="band">
-          {posts.map((post, index) => (
-            <div className="card" key={index}>
+          {posts.map((post) => (
+            <Link
+              className="card"
+              key={post.postId}
+              to={`/home/${post.postId}`}
+            >
               <div
                 className="thumb"
                 style={{ backgroundImage: `url(${post.thumbUrl})` }}
@@ -21,7 +26,7 @@ export default function Home() {
                   </i>
                 </span>
               </article>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

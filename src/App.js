@@ -6,6 +6,7 @@ import Login from "./Components/Login";
 import Register from "./Components/Register";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import PagePost from "./Components/PagePost";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/home">
+          <Route path=":postId" element={<PagePost />} />
+        </Route>
         <Route path="/post" element={<Post />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>

@@ -2,7 +2,7 @@
   position: relative;
   top: 55px;
   height: 100;
-  background: #f5f7f8;
+  background: #f2f2f2;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   padding: 20px 0;
@@ -10,7 +10,7 @@
 
 .AllbackgroundColor {
   height: 100vh;
-  background: #f5f7f8;
+  background: #f2f2f2;
 }
 
 .band {
