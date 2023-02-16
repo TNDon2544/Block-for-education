@@ -4,9 +4,8 @@ import Post from "./Components/Post";
 import Profile from "./Components/Profile";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import PagePost from "./Components/PagePost";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
