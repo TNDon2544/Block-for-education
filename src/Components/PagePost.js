@@ -17,7 +17,7 @@ export default function PagePost() {
             className="image"
             style={{ backgroundImage: `url(${post.thumbUrl})` }}
           />
-          <div className="title">
+          <div className="title-page-post">
             <h4>{post.title}</h4>
           </div>
           <p className="content">
