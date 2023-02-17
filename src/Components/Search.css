@@ -21,18 +21,91 @@
 
 .search-popup-card {
   position: relative;
-  width: 70vh;
-  height: 75vh;
+  width: 500px;
+  height: 600px;
   background: #f5f7f8;
   border-radius: 20px;
   margin-bottom: auto;
   margin-top: auto;
   box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+  overflow: auto;
 }
 
 .input-search {
   position: relative;
-  top: 13px;
+  margin-top: 13px;
+  margin-bottom: 20px;
   margin-left: 13px;
   margin-right: 13px;
+}
+
+.band-search {
+  width: 90%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+}
+
+.card-search {
+  min-height: 100%;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: #444;
+  transition: all 0.1s ease-in;
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: minmax(100px, auto);
+  position: relative;
+}
+
+.card-search:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-search article {
+  padding: 10px;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.thumb-search {
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+
+.title-search {
+  font-size: 20px;
+  margin: 0;
+  color: #333;
+}
+
+.span-search {
+  font-size: 12px;
+  font-weight: bold;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 2em 0 0 0;
+}
+
+.icon-heart-search {
+  position: absolute;
+  right: 10px;
+  font-size: 15px;
+}
+
+.warning-message {
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #999;
 }

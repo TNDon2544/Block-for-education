@@ -19,7 +19,7 @@ export default function Home() {
               />
               <article>
                 <h1 className="title">{post.title}</h1>
-                <span>
+                <span className="span">
                   {post.userName}
                   <i className="bi bi-suit-heart icon-heart">
                     &nbsp;{post.like}

@@ -8,7 +8,7 @@ export default function Navbar() {
 
   let search = null;
   if (isSearchOpen) {
-    search = <Search onBgClick={() => setIsSearchOpen(false)} />;
+    search = <Search closeSearch={() => setIsSearchOpen(false)} />;
   }
 
   return (
