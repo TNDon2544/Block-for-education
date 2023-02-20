@@ -1,6 +1,6 @@
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
-import Post from "./Components/Post";
+import CreatePost from "./Components/Create-Post";
 import Profile from "./Components/Profile";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
@@ -20,7 +20,7 @@ function App() {
         <Route path="/home">
           <Route path=":postId" element={<PagePost />} />
         </Route>
-        <Route path="/post" element={<Post />} />
+        <Route path="/createPost" element={<CreatePost />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>

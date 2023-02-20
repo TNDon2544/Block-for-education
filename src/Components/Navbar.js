@@ -1,9 +1,13 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
 import Search from "./Search";
+import React, { useState } from "react";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
-export default function Navbar() {
+function CollapsibleExample() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   let search = null;
@@ -12,23 +16,13 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg bg-primary nav-position">
-      <div className="container-fluid">
+    <Navbar className="nav-position" expand="lg" bg="primary" variant="dark">
+      <Container>
         <Link className="navbar-brand mb-0 h1 text-white" to="/home">
           Block for education
         </Link>
-        <button
-          className="navbar-toggler text-white"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link
@@ -40,8 +34,8 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-white" to="/post">
-                Post
+              <Link className="nav-link text-white" to="/createPost">
+                Create Post
               </Link>
             </li>
             <li className="nav-item">
@@ -50,24 +44,23 @@ export default function Navbar() {
               </Link>
             </li>
           </ul>
-          <div className="search">
-            <button
-              className="btn btn-outline-light "
-              style={{ width: "200px" }}
-              type="button"
+          <Nav>
+            <Button
+              variant="outline-light"
               onClick={() => setIsSearchOpen(true)}
+              className="search-nav"
             >
               <i className="bi bi-search"></i> Search
-            </button>
-          </div>
-          <div className="">
+            </Button>
             <Link className="nav-link text-white" to="/">
               Logout
             </Link>
-          </div>
-        </div>
-      </div>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
       {search}
-    </nav>
+    </Navbar>
   );
 }
+
+export default CollapsibleExample;
