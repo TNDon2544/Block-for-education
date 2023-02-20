@@ -1,17 +1,28 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import posts from "../Data/DataPosts";
+import DataUser from "../Data/DataUser";
 import "./PagePost.css";
 export default function PagePost() {
   let { postId } = useParams();
   const post = posts.find((p) => p.postId === Number(postId));
   window.scrollTo(0, 0);
+
+  const UserProfile = DataUser.find(
+    (profile) => profile.userName === post.userName
+  );
+  console.log(post);
+  console.log(UserProfile);
   return (
     <div className="AllbackgroundColor">
       <div className="backgroundColor">
         <div className="page-post-card">
-          <div className="name">
-            <h6>{post.userName}</h6>
+          <div className="name-img">
+            <img className="user-img" src={UserProfile.imgUser} alt="" />
+            <div>
+              <h6>{post.userName}</h6>
+              <h6 className="date">20 มกราคม 2566</h6>
+            </div>
           </div>
           <div
             className="image"

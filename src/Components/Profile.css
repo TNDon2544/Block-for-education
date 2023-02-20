@@ -1,4 +1,5 @@
 .img-profile {
+  border: 0.1px solid #f2f2f2;
   border-radius: 80px;
   width: 160px;
   height: 160px;
@@ -96,7 +97,6 @@
   font-size: 12px;
   font-weight: bold;
   color: #999;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 2em 0 0 0;
 }

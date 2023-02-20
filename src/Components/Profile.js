@@ -1,35 +1,39 @@
 import React from "react";
 import "./Profile.css";
 import posts from "../Data/DataPosts";
+import DataUser from "../Data/DataUser";
 import { Link } from "react-router-dom";
 
 export default function Profile() {
+  const filteredUser = posts.filter(
+    (post) => post.userName === "Mongkut Kanchana"
+  );
+  const countPosts = filteredUser.length;
+  const UserProfile = DataUser.find(
+    (profile) => profile.userName === "Mongkut Kanchana"
+  );
   return (
     <div>
       <div className="profile-position">
         <div>
-          <img
-            className="img-profile"
-            src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-            alt=""
-          />
+          <img className="img-profile" src={UserProfile.imgUser} alt="" />
         </div>
         <div>
           <div className="profile-name">
-            <h4>Mongkut Kanchana</h4>
+            <h4>{UserProfile.userName}</h4>
             <button className="btn btn-primary">Edit Profile</button>
           </div>
           <div className="follow">
-            <h6>10 posts</h6>
-            <h6>10 followers</h6>
-            <h6>10 following</h6>
+            <h6>{countPosts} Posts</h6>
+            <h6>10 Followers</h6>
+            <h6>10 Following</h6>
           </div>
         </div>
       </div>
       <hr />
       <div className="position-profile-post">
         <div className="band-profile">
-          {posts.map((post) => (
+          {filteredUser.map((post) => (
             <Link
               className="card-profile"
               key={post.postId}
