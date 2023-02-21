@@ -8,4 +8,9 @@
 
 .search-nav {
   margin-right: 10px;
+  border-radius: 15px;
+}
+
+.link-hover:hover {
+  transform: scale(1.04);
 }

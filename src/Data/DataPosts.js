@@ -47,6 +47,30 @@ const posts = [
     userName: "Sunan Somboon",
     like: 12,
   },
+  {
+    postId: 7,
+    thumbUrl:
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8d29ya3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+    title: "My Blog Post 7",
+    userName: "Mongkut Kanchana",
+    like: 19,
+  },
+  {
+    postId: 8,
+    thumbUrl:
+      "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHdvcmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+    title: "My Blog Post 8",
+    userName: "Sunan Somboon",
+    like: 9,
+  },
+  {
+    postId: 9,
+    thumbUrl:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHdvcmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+    title: "My Blog Post 9",
+    userName: "Sakchai Somporn",
+    like: 19,
+  },
 ];
 
 export default posts;

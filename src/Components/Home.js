@@ -4,8 +4,8 @@ import posts from "../Data/DataPosts";
 import "./Home.css";
 export default function Home() {
   return (
-    <div className="AllbackgroundColor">
-      <div className="backgroundColor">
+    <div className="AllbackgroundColor-home">
+      <div className="backgroundColor-home">
         <div className="band">
           {posts.map((post) => (
             <Link

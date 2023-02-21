@@ -18,7 +18,7 @@ function CollapsibleExample() {
   return (
     <Navbar className="nav-position" expand="lg" bg="primary" variant="dark">
       <Container>
-        <Link className="navbar-brand mb-0 h1 text-white" to="/home">
+        <Link className="navbar-brand mb-0 h1 text-white link-hover" to="/home">
           Block for education
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -26,7 +26,7 @@ function CollapsibleExample() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link
-                className="nav-link active text-white"
+                className="nav-link active text-white link-hover"
                 aria-current="page"
                 to="/home"
               >
@@ -34,12 +34,12 @@ function CollapsibleExample() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-white" to="/createPost">
+              <Link className="nav-link text-white link-hover" to="/createPost">
                 Create Post
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-white" to="/profile">
+              <Link className="nav-link text-white link-hover" to="/profile">
                 Profile
               </Link>
             </li>
@@ -52,7 +52,7 @@ function CollapsibleExample() {
             >
               <i className="bi bi-search"></i> Search
             </Button>
-            <Link className="nav-link text-white" to="/">
+            <Link className="nav-link text-white link-hover" to="/">
               Logout
             </Link>
           </Nav>
