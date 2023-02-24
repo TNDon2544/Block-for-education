@@ -20,7 +20,7 @@ const posts = [
     thumbUrl:
       "https://images.unsplash.com/photo-1675352162037-792ae4045e3c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDEyfGFldTZyTC1qNmV3fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
     title: "My Blog Post 3",
-    userName: "Mongkut Kanchana",
+    userName: "Lanta Pwit",
     like: 8,
   },
   {
@@ -52,7 +52,7 @@ const posts = [
     thumbUrl:
       "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8d29ya3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
     title: "My Blog Post 7",
-    userName: "Mongkut Kanchana",
+    userName: "Lanta Pwit",
     like: 19,
   },
   {

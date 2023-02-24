@@ -6,14 +6,26 @@ import Search from "./Search";
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import DataUser from "../Data/DataUser";
+import CreatePost from "./CreatePost";
 
 function CollapsibleExample() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
 
   let search = null;
   if (isSearchOpen) {
     search = <Search closeSearch={() => setIsSearchOpen(false)} />;
   }
+
+  let createPost = null;
+  if (isCreatePostOpen) {
+    createPost = <CreatePost closeCreatePost={() => setIsCreatePostOpen(false)} />;
+  }
+
+  const UserProfile = DataUser.find(
+    (profile) => profile.userName === "Thanadon Pongjessada"
+  );
 
   return (
     <Navbar className="nav-position" expand="lg" bg="primary" variant="dark">
@@ -34,12 +46,12 @@ function CollapsibleExample() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-white link-hover" to="/createPost">
+              <Link className="nav-link text-white link-hover" onClick={() => setIsCreatePostOpen(true)}>
                 Create Post
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-white link-hover" to="/profile">
+              <Link className="nav-link text-white link-hover" to={`/${UserProfile.UserId}`}>
                 Profile
               </Link>
             </li>
@@ -59,6 +71,7 @@ function CollapsibleExample() {
         </Navbar.Collapse>
       </Container>
       {search}
+      {createPost}
     </Navbar>
   );
 }

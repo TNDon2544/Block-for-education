@@ -47,18 +47,18 @@ export default function Login() {
                         Remember me{" "}
                       </label>
                     </div>
-                    <a href="/forgotpass" className="link">
+                    <a href="/" className="link">
                       Forgot password?
                     </a>
                   </div>
-
-                  <button
-                    className="btn btn-primary btn-lg btn-block border-0 btn-login"
-                    type="submit"
-                  >
-                    LOGIN
-                  </button>
-
+                  <Link to="/home">
+                    <button
+                      className="btn btn-primary btn-lg btn-block border-0 btn-login"
+                      type="submit"
+                    >
+                      LOGIN
+                    </button>
+                  </Link>
                   <p className="small mt-1 pt-1">
                     Don't have an account?{" "}
                     <Link to="/register" className="link link-danger">

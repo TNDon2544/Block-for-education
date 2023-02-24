@@ -49,6 +49,10 @@
   background-position: center;
 }
 
+.user-img:hover {
+  transform: scale(1.05);
+}
+
 .user-img {
   border: 0.1px solid #f2f2f2;
   border-radius: 80px;
@@ -58,4 +62,13 @@
 
 .date {
   font-size: 14px;
+}
+
+.Link-PagePost {
+  text-decoration: none;
+  color: black;
+}
+
+.Link-PagePost:hover {
+  text-decoration: underline; 
 }

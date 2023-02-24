@@ -21,8 +21,8 @@
 
 .search-popup-card {
   position: relative;
-  width: 500px;
-  height: 600px;
+  width: 700px;
+  height: 700px;
   background: #f5f7f8;
   border-radius: 20px;
   margin-bottom: auto;
@@ -49,6 +49,20 @@
   grid-gap: 20px;
 }
 
+.post-box {
+  width: 80%;
+  max-width: 1240px;
+  max-height: 500px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  overflow: auto;
+  background-color: #d6d6d6;
+  border-radius: 20px;
+}
+
 .card-search {
   min-height: 100%;
   background: white;
@@ -56,7 +70,7 @@
   text-decoration: none;
   color: #444;
   transition: all 0.1s ease-in;
-  border-radius: 1rem;
+  border-radius: 20px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: minmax(100px, auto);
@@ -89,7 +103,7 @@
 }
 
 .span-search {
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
   color: #999;
   letter-spacing: 0.05em;
@@ -107,4 +121,10 @@
   text-align: center;
   font-weight: bold;
   color: #999;
+}
+
+.found {
+  color: #999;
+  margin-left: 75px;
+  margin-right: 40px;
 }
