@@ -9,12 +9,12 @@ export default function AllProfile() {
   let { UserId } = useParams();
   const user = DataUser.find((u) => u.UserId === String(UserId));
   const filteredUserPosts = posts.filter(
-    (post) => post.userName === user.userName
+    (post) => post.UserId === user.UserId
   );
   const countPosts = filteredUserPosts.length;
   window.scrollTo(0, 0);
   let myProfile;
-  if (user.userName === "Thanadon Pongjessada") {
+  if (user.UserId === "don2544") {
     myProfile = (
       <button className="btn btn-primary btn-sm button-size">
         Edit Profile

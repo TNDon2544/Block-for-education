@@ -24,7 +24,7 @@ function CollapsibleExample() {
   }
 
   const UserProfile = DataUser.find(
-    (profile) => profile.userName === "Thanadon Pongjessada"
+    (profile) => profile.UserId === "don2544"
   );
 
   return (
