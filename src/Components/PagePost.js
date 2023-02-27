@@ -6,13 +6,14 @@ import Navbar from "./Navbar";
 import "./PagePost.css";
 export default function PagePost() {
   let { postId } = useParams();
+   /* เอา posts มาหาว่าเท่ากับ postId ที่ส่งมาจาก useParams ไหมเพื่อจะลิ้งไปหน้าบทความนั้นๆ  */
   const post = posts.find((p) => p.postId === Number(postId));
   window.scrollTo(0, 0);
-
+  /* เอา DataUser มาหาว่าเท่ากับ UserId ของ post ไหมเพื่อจะได้ดึงโปรไฟล์คนเขียนบทความมาใช้  */
   const UserProfile = DataUser.find(
     (profile) => profile.UserId === post.UserId
   );
-
+ /* เช็คว่าในดาต้าเบสตอนเพิ่ม list มีรูปหรือมีข้อความมาไหมถ้าไม่มีก็ใส่ null ถ้ามีก็ใส่ตามเงื่อนไข ข้อมูลที่ใส่จะใส่เข้าไปใน listItems */
   const listItems = [];
   for (let index = 1; index <= 10; index++) {
     const img = post[`img${index}`];

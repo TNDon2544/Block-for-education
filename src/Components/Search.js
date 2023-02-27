@@ -5,22 +5,26 @@ import DataUser from "../Data/DataUser";
 import "./Search.css";
 
 export default function Search(props) {
+  /* รับ props function ที่ส่งมาจาก Navbar.js*/
   const { closeSearch } = props;
   const [searchText, setSearchText] = useState("");
+   /* นำ posts มา filter ว่ามีตัวอักษรจาก title ตรงกันไหม(ค้นหาบทความ) */
   const filteredPosts = posts.filter((post) => {
     return post.title.includes(searchText);
   });
+  /* นำ posts มา filter ว่ามีตัวอักษรจาก userName ตรงกันไหม(ค้นหาชื่อผู้ใช้) */
   const filteredUser = DataUser.filter((user) => {
     return user.userName.includes(searchText);
   });
-
+ /* ถ้า pop up เปิดจะ scroll หน้าอื่นไม่ได้ยกเว้น Search*/
   useEffect(() => {
     document.documentElement.style.overflow = "hidden";
     return () => {
       document.documentElement.style.overflow = "auto";
     };
   }, []);
-
+ /*เงื่อนไขค้นหา ถ้ายังไม่พิมพ์ข้อความใน input จะขึ้น Type what you want to search. ถ้าพิมพ์แล้วไม่ตรงกับ 
+  filteredPosts filteredUser จะแสดง Not found. ถ้าพิมพ์แล้วเจอจะแสดงสิ่งที่เจอ*/
   let typeSearch;
   if (searchText === "") {
     typeSearch = (
