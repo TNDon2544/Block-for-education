@@ -10,7 +10,7 @@ export default function Home() {
       <div className="AllbackgroundColor-home">
         <div className="backgroundColor-home">
           <div className="band">
-            {posts.map((post) => (
+            {posts.map((post) => (  /* เอา posts มาลูปเพื่อแสดงข้อมูล */
               <Link
                 className="card"
                 key={post.postId}

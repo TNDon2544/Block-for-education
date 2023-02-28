@@ -8,7 +8,7 @@ import AllProfile from "./Components/AllProfile";
 function App() {
   return (
     <div>
-      {/* */}
+      {/* กำหนดเส้นทางในการเปลี่ยนหน้า Web */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
