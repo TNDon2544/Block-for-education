@@ -1,14 +1,27 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import DataUser from "../Data/DataUser";
 import "./CreatePost.css";
 
 export default function CreatePost(props) {
   const { closeCreatePost } = props;
+  const [images, setImages] = useState([]);
+  const [imageURLs, setImageURLs] = useState([]);
   /* ดึงโปรไฟล์เจ้าของโพส */
   const UserProfile = DataUser.find((profile) => profile.UserId === "don2544");
-   /* อ้างอิงปุ่มกับ input */
+  /* อ้างอิงปุ่มกับ input */
   const fileInputRef = useRef(null);
+  useEffect(() => {
+    if (images.length < 1) return;
+    const newImageUrls = [];
+    images.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
+    setImageURLs(newImageUrls);
+  }, [images]);
+
+  function onImageChange(e) {
+    setImages([...e.target.files]);
+  }
+
   useEffect(() => {
     document.documentElement.style.overflow = "hidden";
     return () => {
@@ -41,18 +54,31 @@ export default function CreatePost(props) {
               </div>
             </div>
             <form className="form-create">
-              <button
-                className="add-img"
-                onClick={(event) => {
-                  event.preventDefault();
-                  fileInputRef.current.click();
-                }}
-              >
-                Add Thumbnail
-              </button>
+              {imageURLs.length > 0 ? (
+                imageURLs.map((imageSrc, index) => (
+                  <div
+                    key={index}
+                    className="image-create-post"
+                    style={{ backgroundImage: `url(${imageSrc})` }}
+                  />
+                ))
+              ) : (
+                <button
+                  className="add-img"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    fileInputRef.current.click();
+                  }}
+                >
+                  Add Thumbnail
+                </button>
+              )}
 
               <input
                 type="file"
+                multiple
+                accept="image/*"
+                onChange={onImageChange}
                 style={{ display: "none" }}
                 ref={fileInputRef}
               />
