@@ -7,12 +7,15 @@ import { Link, useParams } from "react-router-dom";
 
 export default function AllProfile() {
   let { UserId } = useParams();
+  /*  เอา DataUser มาหาว่าเท่ากับ UserId ที่ส่งมาจาก useParams ไหมเพื่อจะลิ้งไปหน้า User นั้นๆ  */
   const user = DataUser.find((u) => u.UserId === String(UserId));
+  /* เอา posts มา filter ว่า UserId ของ posts ตรงกับ UserId ของหน้า User ที่เปิดไหม (ดึงโพสของหน้า User นั้นๆ) */
   const filteredUserPosts = posts.filter(
     (post) => post.UserId === user.UserId
   );
   const countPosts = filteredUserPosts.length;
   window.scrollTo(0, 0);
+  /* เปลี่ยนปุ่มถ้าเป็นโปรไฟล์ตัวเองจะเป็นปุ่ม Edit Profile ถ้าเป็นโปรไฟล์คนอื่นจะเป็นปุ่ม Follow */
   let myProfile;
   if (user.UserId === "don2544") {
     myProfile = (
