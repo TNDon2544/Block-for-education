@@ -28,7 +28,6 @@ export default function CreatePost(props) {
       document.documentElement.style.overflow = "auto";
     };
   }, []);
-
   return (
     <div>
       <Navbar />
@@ -60,7 +59,11 @@ export default function CreatePost(props) {
                     key={index}
                     className="image-create-post"
                     style={{ backgroundImage: `url(${imageSrc})` }}
-                  />
+                  >
+                    <div className="close-bt">
+                    <i className="bi bi-x-circle-fill" onClick={() => setImageURLs([])}/>
+                    </div>
+                  </div>
                 ))
               ) : (
                 <button
@@ -83,6 +86,12 @@ export default function CreatePost(props) {
                 ref={fileInputRef}
               />
             </form>
+            <div className="input-position">
+              <textarea className="form-control title-input" placeholder="Title" rows="1" />
+            </div>
+            <div className="input-position">
+              <textarea className="form-control content-input" placeholder="Content" />
+            </div>
           </div>
           <hr className="line" />
           <div>

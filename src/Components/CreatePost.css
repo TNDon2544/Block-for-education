@@ -93,4 +93,39 @@
   padding-bottom: 70%;
   background-size: cover;
   background-position: center;
+  position: relative;
 }
+
+.close-bt {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.input-position {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.title-input {
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #f5f7f8;
+  border: none;
+}
+
+.content-input {
+  font-size: 25px;
+  background-color: #f5f7f8;
+  border: none;
+}
+
+.title-input::placeholder {
+  font-weight: bold;
+  color: #999;
+}
+

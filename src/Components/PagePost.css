@@ -15,7 +15,7 @@
 
 .page-post-card {
   position: relative;
-  width: 480px;
+  width: 500px;
   height: auto;
   background: #ffff;
   border-radius: 20px;
@@ -43,12 +43,19 @@
   padding-right: 20px;
 }
 
-.image {
+.image-thumb {
   padding-bottom: 70%;
   background-size: cover;
   background-position: center;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.image-content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 500px;
+  object-fit: cover;
 }
 
 .user-img:hover {
