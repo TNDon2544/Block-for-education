@@ -11,23 +11,37 @@ export default function CreatePost(props) {
   const UserProfile = DataUser.find((profile) => profile.UserId === "don2544");
   /* อ้างอิงปุ่มกับ input */
   const fileInputRef = useRef(null);
+  /* ส่งค่ารูปที่เลือกไปเก็บใน imageURLs เพื่อจะใช้แสดงภาพที่เลือก*/
   useEffect(() => {
     if (images.length < 1) return;
     const newImageUrls = [];
     images.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
     setImageURLs(newImageUrls);
   }, [images]);
-
+  /* ส่งค่ารูปที่เลือกไปเก็บไว้ใน images */
   function onImageChange(e) {
     setImages([...e.target.files]);
   }
-
+  /* เปิด pop up จะไม่สามารถเลื่อนหน้าเพจหลัง pop up  */
   useEffect(() => {
     document.documentElement.style.overflow = "hidden";
     return () => {
       document.documentElement.style.overflow = "auto";
     };
   }, []);
+  /* ดึงค่าวันที่มาแสดง */
+  const date = new Date();
+  const options = {
+    timeZone: "Asia/Bangkok",
+    hour12: false,
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  };
+  const formattedDate = date.toLocaleString("en-US", options);
+
   return (
     <div>
       <Navbar />
@@ -49,7 +63,7 @@ export default function CreatePost(props) {
               />
               <div>
                 <h5>{UserProfile.userName}</h5>
-                <h6 className="date-create-post">1 มีนาคม 2566</h6>
+                <h6 className="date-create-post">{formattedDate}</h6>
               </div>
             </div>
             <form className="form-create">
@@ -61,7 +75,13 @@ export default function CreatePost(props) {
                     style={{ backgroundImage: `url(${imageSrc})` }}
                   >
                     <div className="close-bt">
-                    <i className="bi bi-x-circle-fill" onClick={() => setImageURLs([])}/>
+                      <i
+                        className="bi bi-x-circle-fill"
+                        onClick={() => {
+                          setImageURLs([]);
+                          fileInputRef.current.value = "";
+                        }}
+                      />
                     </div>
                   </div>
                 ))
@@ -87,10 +107,17 @@ export default function CreatePost(props) {
               />
             </form>
             <div className="input-position">
-              <textarea className="form-control title-input" placeholder="Title" rows="1" />
+              <textarea
+                className="form-control title-input"
+                placeholder="Title"
+                rows="1"
+              />
             </div>
             <div className="input-position">
-              <textarea className="form-control content-input" placeholder="Content" />
+              <textarea
+                className="form-control content-input"
+                placeholder="Content"
+              />
             </div>
           </div>
           <hr className="line" />
