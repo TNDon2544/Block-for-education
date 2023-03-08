@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AllProfile.css";
 import posts from "../Data/DataPosts";
 import DataUser from "../Data/DataUser";
@@ -6,13 +6,17 @@ import Navbar from "./Navbar";
 import { Link, useParams } from "react-router-dom";
 
 export default function AllProfile() {
+  const [link, setLink] = useState("");
+
+  function handleLinkClick(clickedLink) {
+    setLink(clickedLink);
+  }
+
   let { UserId } = useParams();
   /*  เอา DataUser มาหาว่าเท่ากับ UserId ที่ส่งมาจาก useParams ไหมเพื่อจะลิ้งไปหน้า User นั้นๆ  */
   const user = DataUser.find((u) => u.UserId === String(UserId));
   /* เอา posts มา filter ว่า UserId ของ posts ตรงกับ UserId ของหน้า User ที่เปิดไหม (ดึงโพสของหน้า User นั้นๆ) */
-  const filteredUserPosts = posts.filter(
-    (post) => post.UserId === user.UserId
-  );
+  const filteredUserPosts = posts.filter((post) => post.UserId === user.UserId);
   const countPosts = filteredUserPosts.length;
   window.scrollTo(0, 0);
   /* เปลี่ยนปุ่มถ้าเป็นโปรไฟล์ตัวเองจะเป็นปุ่ม Edit Profile ถ้าเป็นโปรไฟล์คนอื่นจะเป็นปุ่ม Follow */
@@ -26,6 +30,42 @@ export default function AllProfile() {
   } else {
     myProfile = (
       <button className="btn btn-primary btn-sm button-size">Follow</button>
+    );
+  }
+  let myDataProfile;
+  if (link === "/bookMark") {
+    myDataProfile = (
+      <div>
+        <h3>Bookmark</h3>
+      </div>
+    );
+  } else {
+    myDataProfile = (
+      <div>
+        <div className="band-profile">
+          {filteredUserPosts.map((post) => (
+            <Link
+              className="card-profile"
+              key={post.postId}
+              to={`/home/${post.postId}`}
+            >
+              <div
+                className="thumb-profile"
+                style={{ backgroundImage: `url(${post.thumbUrl})` }}
+              />
+              <article>
+                <h1 className="title-profile">{post.title}</h1>
+                <span className="span-profile">
+                  {post.userName}
+                  <i className="bi bi-suit-heart icon-heart-profile">
+                    &nbsp;{post.like}
+                  </i>
+                </span>
+              </article>
+            </Link>
+          ))}
+        </div>
+      </div>
     );
   }
   return (
@@ -54,31 +94,21 @@ export default function AllProfile() {
             </div>
           </div>
           <hr className="hr-position" />
-          <div>
-            <div className="band-profile">
-              {filteredUserPosts.map((post) => (
-                <Link
-                  className="card-profile"
-                  key={post.postId}
-                  to={`/home/${post.postId}`}
-                >
-                  <div
-                    className="thumb-profile"
-                    style={{ backgroundImage: `url(${post.thumbUrl})` }}
-                  />
-                  <article>
-                    <h1 className="title-profile">{post.title}</h1>
-                    <span className="span-profile">
-                      {post.userName}
-                      <i className="bi bi-suit-heart icon-heart-profile">
-                        &nbsp;{post.like}
-                      </i>
-                    </span>
-                  </article>
-                </Link>
-              ))}
-            </div>
+          <div className="post-profile">
+            <Link
+              className="profile-item"
+              onClick={() => handleLinkClick("/myPost")}
+            >
+              <i className="bi bi-grid-3x3" /> Posts
+            </Link>
+            <Link
+              className="profile-item"
+              onClick={() => handleLinkClick("/bookMark")}
+            >
+              <i className="bi bi-bookmark" /> Bookmark
+            </Link>
           </div>
+          {myDataProfile}
         </div>
       </div>
     </div>

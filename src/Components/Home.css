@@ -52,6 +52,45 @@
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
 }
 
+.Three-dots {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card:hover .Three-dots svg {
+  visibility: visible;
+}
+
+.Three-dots svg {
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.589);
+  width: 45px;
+  height: 45px;
+  border-radius: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.bookmark {
+  font-size: 25px;
+}
+
+.report {
+  font-size: 25px;
+}
+
 .card article {
   padding: 20px;
   display: flex;
