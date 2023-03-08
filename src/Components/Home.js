@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import posts from "../Data/DataPosts";
 import Navbar from "./Navbar";
 import "./Home.css";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 export default function Home() {
-  // const handleClick = (event) => {
-  //   event.preventDefault();
-  // };
+  /* ฟังก์ชันนี้ทำให้ไม่เปิด Link post เมื่อคลิก Three-dots*/
+  const handleTDClick = (event) => {
+    event.preventDefault();
+  };
   return (
     <div>
       <Navbar />
@@ -21,7 +23,8 @@ export default function Home() {
                 to={`/home/${post.postId}`}
               >
                 <div className="Three-dots">
-                  <NavDropdown
+                  <DropdownButton
+                    onClick={handleTDClick}
                     title={
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -33,15 +36,19 @@ export default function Home() {
                       </svg>
                     }
                   >
-                    <NavDropdown.Item>
-                      <i className="bi bi-bookmark bookmark" />
-                      &nbsp; Add Bookmark
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <i className="bi bi-exclamation-square report" />
-                      &nbsp; Report
-                    </NavDropdown.Item>
-                  </NavDropdown>
+                    <Dropdown.Item>
+                      <span>
+                        <i className="bi bi-bookmark bookmark" />
+                        &nbsp; Add Bookmark
+                      </span>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <span>
+                        <i className="bi bi-exclamation-square report" />
+                        &nbsp; Report
+                      </span>
+                    </Dropdown.Item>
+                  </DropdownButton>
                 </div>
                 <div
                   className="thumb"

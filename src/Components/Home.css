@@ -52,6 +52,17 @@
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
 }
 
+.btn.dropdown-toggle {
+  background-color: transparent;
+  border: none;
+}
+
+.btn.dropdown-toggle:active {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+
 .Three-dots {
   position: absolute;
   right: 10px;

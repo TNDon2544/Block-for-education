@@ -7,15 +7,15 @@ import { Link, useParams } from "react-router-dom";
 
 export default function AllProfile() {
   /* สร้าง State เก็บข้อมูลหน้าที่คลิกเพื่อมาแสดงหน้าที่เลือกตามเงื่อนไขด้านล่าง */
-  const [link, setLink] = useState("/myPost");
+  const [link, setLink] = useState("myPost");
   function handleLinkClick(clickedLink) {
     setLink(clickedLink);
   }
   /* สร้าง State เก็บข้อมูลหน้าที่คลิกเพื่อเปลี่ยนสีปุ่มให้รู้ว่าอยู่หน้าไหน */
-  const [activeLink, setActiveLink] = useState("/myPost");
-  const handleActiveLinkClick = (link) => {
+  const [activeLink, setActiveLink] = useState("myPost");
+  function handleActiveLinkClick(link) {
     setActiveLink(link);
-  };
+  }
 
   let { UserId } = useParams();
   /*  เอา DataUser มาหาว่าเท่ากับ UserId ที่ส่งมาจาก useParams ไหมเพื่อจะลิ้งไปหน้า User นั้นๆ  */
@@ -40,11 +40,11 @@ export default function AllProfile() {
         <div className="profile-item">
           <Link
             className={
-              activeLink === "/myPost" ? "active-item" : "not-active-item"
+              activeLink === "myPost" ? "active-item" : "not-active-item"
             }
             onClick={() => {
-              handleLinkClick("/myPost");
-              handleActiveLinkClick("/myPost");
+              handleLinkClick("myPost");
+              handleActiveLinkClick("myPost");
             }}
           >
             <i className="bi bi-grid-3x3" /> Posts
@@ -53,11 +53,11 @@ export default function AllProfile() {
         <div className="profile-item">
           <Link
             className={
-              activeLink === "/bookMark" ? "active-item" : "not-active-item"
+              activeLink === "bookMark" ? "active-item" : "not-active-item"
             }
             onClick={() => {
-              handleLinkClick("/bookMark");
-              handleActiveLinkClick("/bookMark");
+              handleLinkClick("bookMark");
+              handleActiveLinkClick("bookMark");
             }}
           >
             <i className="bi bi-bookmark" /> Bookmark
@@ -66,14 +66,14 @@ export default function AllProfile() {
       </div>
     );
     /* เงื่อนไขในการแสดงหน้าที่คลิก */
-    if (link === "/bookMark") {
+    if (link === "bookMark") {
       myDataProfile = (
         <div className="text-center">
           <h3>Bookmark</h3>
         </div>
       );
     }
-    if (link === "/myPost") {
+    if (link === "myPost") {
       myDataProfile = (
         <div>
           <div className="band-profile">
