@@ -10,6 +10,74 @@ export default function Home() {
   const handleTDClick = (event) => {
     event.preventDefault();
   };
+  let myThreeDot = (
+    <div className="Three-dots">
+      <DropdownButton
+        onClick={handleTDClick}
+        title={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            className="bi bi-three-dots"
+            viewBox="0 0 16 16"
+          >
+            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+          </svg>
+        }
+      >
+        <Dropdown.Item as="div">
+          <div>
+            <i className="bi bi-bookmark icon-home" />
+            &nbsp; Add Bookmark
+          </div>
+        </Dropdown.Item>
+        <Dropdown.Item as="div">
+          <div>
+            <i className="bi bi-pencil icon-home" />
+            &nbsp; Edit
+          </div>
+        </Dropdown.Item>
+        <Dropdown.Item as="div">
+          <div style={{ color: "red" }}>
+            <i className="bi bi-trash3 icon-home" />
+            &nbsp; Delete
+          </div>
+        </Dropdown.Item>
+      </DropdownButton>
+    </div>
+  );
+
+  let threeDot = (
+    <div className="Three-dots">
+      <DropdownButton
+        onClick={handleTDClick}
+        title={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            className="bi bi-three-dots"
+            viewBox="0 0 16 16"
+          >
+            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+          </svg>
+        }
+      >
+        <Dropdown.Item as="div">
+          <div>
+            <i className="bi bi-bookmark icon-home" />
+            &nbsp; Add Bookmark
+          </div>
+        </Dropdown.Item>
+        <Dropdown.Item as="div">
+          <div>
+            <i className="bi bi-exclamation-square icon-home" />
+            &nbsp; Report
+          </div>
+        </Dropdown.Item>
+      </DropdownButton>
+    </div>
+  );
+
   return (
     <div>
       <Navbar />
@@ -21,35 +89,8 @@ export default function Home() {
                 className="card"
                 key={post.postId}
                 to={`/home/${post.postId}`}
-              >
-                <div className="Three-dots">
-                  <DropdownButton
-                    onClick={handleTDClick}
-                    title={
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor"
-                        className="bi bi-three-dots"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-                      </svg>
-                    }
-                  >
-                    <Dropdown.Item>
-                      <span>
-                        <i className="bi bi-bookmark bookmark" />
-                        &nbsp; Add Bookmark
-                      </span>
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                      <span>
-                        <i className="bi bi-exclamation-square report" />
-                        &nbsp; Report
-                      </span>
-                    </Dropdown.Item>
-                  </DropdownButton>
-                </div>
+              > {/* ตรวจสอบว่าใช้โพสตัวเองไหมถ้าใช่จะเปลี่ยนปุ่ม ThreeDot */}
+                {post.UserId === "don2544" ? myThreeDot : threeDot}
                 <div
                   className="thumb"
                   style={{ backgroundImage: `url(${post.thumbUrl})` }}

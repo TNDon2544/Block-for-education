@@ -4,8 +4,14 @@ import posts from "../Data/DataPosts";
 import DataUser from "../Data/DataUser";
 import Navbar from "./Navbar";
 import { Link, useParams } from "react-router-dom";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 export default function AllProfile() {
+  /* ฟังก์ชันนี้ทำให้ไม่เปิด Link post เมื่อคลิก Three-dots*/
+  const handleTDClick = (event) => {
+    event.preventDefault();
+  };
   /* สร้าง State เก็บข้อมูลหน้าที่คลิกเพื่อมาแสดงหน้าที่เลือกตามเงื่อนไขด้านล่าง */
   const [link, setLink] = useState("myPost");
   function handleLinkClick(clickedLink) {
@@ -24,11 +30,12 @@ export default function AllProfile() {
   const filteredUserPosts = posts.filter((post) => post.UserId === user.UserId);
   const countPosts = filteredUserPosts.length;
   window.scrollTo(0, 0);
-  /* เปลี่ยนปุ่มถ้าเป็นโปรไฟล์ตัวเองจะเป็นปุ่ม Edit Profile ถ้าเป็นโปรไฟล์คนอื่นจะเป็นปุ่ม Follow */
+
   let myProfileBT;
   let myDataProfile;
   let switchButton;
   if (user.UserId === "don2544") {
+    /* เปลี่ยนปุ่มถ้าเป็นโปรไฟล์ตัวเองจะเป็นปุ่ม Edit Profile ถ้าเป็นโปรไฟล์คนอื่นจะเป็นปุ่ม Follow */
     myProfileBT = (
       <button className="btn btn-primary btn-sm button-size">
         Edit Profile
@@ -83,6 +90,40 @@ export default function AllProfile() {
                 key={post.postId}
                 to={`/home/${post.postId}`}
               >
+                <div className="Three-dots-profile">
+                  <DropdownButton
+                    onClick={handleTDClick}
+                    title={
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        className="bi bi-three-dots"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                      </svg>
+                    }
+                  >
+                    <Dropdown.Item as="div">
+                      <div>
+                        <i className="bi bi-bookmark icon-profile" />
+                        &nbsp; Add Bookmark
+                      </div>
+                    </Dropdown.Item>
+                    <Dropdown.Item as="div">
+                      <div>
+                        <i className="bi bi-pencil icon-profile" />
+                        &nbsp; Edit
+                      </div>
+                    </Dropdown.Item>
+                    <Dropdown.Item as="div">
+                      <div style={{ color: "red" }}>
+                        <i className="bi bi-trash3 icon-profile" />
+                        &nbsp; Delete
+                      </div>
+                    </Dropdown.Item>
+                  </DropdownButton>
+                </div>
                 <div
                   className="thumb-profile"
                   style={{ backgroundImage: `url(${post.thumbUrl})` }}
@@ -124,6 +165,34 @@ export default function AllProfile() {
               key={post.postId}
               to={`/home/${post.postId}`}
             >
+              <div className="Three-dots-profile">
+                <DropdownButton
+                  onClick={handleTDClick}
+                  title={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      className="bi bi-three-dots"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
+                  }
+                >
+                  <Dropdown.Item as="div">
+                    <div>
+                      <i className="bi bi-bookmark icon-profile" />
+                      &nbsp; Add Bookmark
+                    </div>
+                  </Dropdown.Item>
+                  <Dropdown.Item as="div">
+                    <div>
+                      <i className="bi bi-exclamation-square icon-profile" />
+                      &nbsp; Report
+                    </div>
+                  </Dropdown.Item>
+                </DropdownButton>
+              </div>
               <div
                 className="thumb-profile"
                 style={{ backgroundImage: `url(${post.thumbUrl})` }}

@@ -173,3 +173,50 @@
   text-underline-position: under;
   text-underline-offset: -38px;
 }
+
+.btn.dropdown-toggle {
+  background-color: transparent;
+  border: none;
+}
+
+.btn.dropdown-toggle:active {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+
+.Three-dots-profile {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-profile:hover .Three-dots-profile svg {
+  visibility: visible;
+}
+
+.Three-dots-profile svg {
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.589);
+  width: 45px;
+  height: 45px;
+  border-radius: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.icon-profile {
+  font-size: 25px;
+}
+

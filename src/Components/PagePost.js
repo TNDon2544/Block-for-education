@@ -42,7 +42,7 @@ export default function PagePost() {
               <Link to={`/${UserProfile.UserId}`}>
                 <img className="user-img" src={UserProfile.imgUser} alt="" />
               </Link>
-              <div>
+              <div className="name-date">
                 <Link className="Link-PagePost" to={`/${UserProfile.UserId}`}>
                   <h6>{post.userName}</h6>
                 </Link>
