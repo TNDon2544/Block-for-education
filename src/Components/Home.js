@@ -1,11 +1,30 @@
 import { Link } from "react-router-dom";
-import posts from "../Data/DataPosts";
 import Navbar from "./Navbar";
 import "./Home.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    (async () => {
+      await getdata();
+    })();
+  }, []);
+  const [Data, setData] = useState([]);
+  const getdata = async () => {
+    await fetch("http://localhost:3000/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        setData(result);
+      });
+  };
   /* ฟังก์ชันนี้ทำให้ไม่เปิด Link post เมื่อคลิก Three-dots*/
   const handleTDClick = (event) => {
     event.preventDefault();
@@ -84,12 +103,14 @@ export default function Home() {
       <div className="AllbackgroundColor-home">
         <div className="backgroundColor-home">
           <div className="band">
-            {posts.map((post /* เอา posts มาลูปเพื่อแสดงข้อมูล */) => (
+            {Data.map((post /* เอา posts มาลูปเพื่อแสดงข้อมูล */) => (
               <Link
                 className="card"
                 key={post.postId}
                 to={`/home/${post.postId}`}
-              > {/* ตรวจสอบว่าใช้โพสตัวเองไหมถ้าใช่จะเปลี่ยนปุ่ม ThreeDot */}
+              >
+                {" "}
+                {/* ตรวจสอบว่าใช้โพสตัวเองไหมถ้าใช่จะเปลี่ยนปุ่ม ThreeDot */}
                 {post.UserId === "don2544" ? myThreeDot : threeDot}
                 <div
                   className="thumb"

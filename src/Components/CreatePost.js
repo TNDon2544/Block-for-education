@@ -119,6 +119,7 @@ export default function CreatePost(props) {
                 placeholder="Content"
               />
             </div>
+
           </div>
           <hr className="line" />
           <div>
