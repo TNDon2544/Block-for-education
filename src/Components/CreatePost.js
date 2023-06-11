@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import DataUser from "../Data/DataUser";
 import "./CreatePost.css";
+import Tag from "./Tag";
 
 export default function CreatePost(props) {
   const { closeCreatePost } = props;
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
+  const [isTagOpen, setIsTagOpen] = useState(false);
   /* ดึงโปรไฟล์เจ้าของโพส */
   const UserProfile = DataUser.find((profile) => profile.UserId === "don2544");
   /* อ้างอิงปุ่มกับ input */
@@ -21,6 +23,10 @@ export default function CreatePost(props) {
   /* ส่งค่ารูปที่เลือกไปเก็บไว้ใน images */
   function onImageChange(e) {
     setImages([...e.target.files]);
+  }
+  let tag = null;
+  if (isTagOpen) {
+    tag = <Tag closeTag={() => setIsTagOpen(false)} />;
   }
   /* เปิด pop up จะไม่สามารถเลื่อนหน้าเพจหลัง pop up  */
   useEffect(() => {
@@ -53,7 +59,7 @@ export default function CreatePost(props) {
               <h3>Create Post</h3>
             </div>
           </div>
-          <hr className="line" />
+          <hr className="line-create" />
           <div className="main-create-post">
             <div className="name-img-create-post">
               <img
@@ -106,6 +112,9 @@ export default function CreatePost(props) {
                 ref={fileInputRef}
               />
             </form>
+            <div className="tag-position">
+              <button className="btn btn-lg tag" onClick={() => setIsTagOpen(true)}>+ Tag</button>
+            </div>
             <div className="input-position">
               <textarea
                 className="form-control title-input"
@@ -119,14 +128,24 @@ export default function CreatePost(props) {
                 placeholder="Content"
               />
             </div>
-
           </div>
           <hr className="line" />
           <div>
             <button className="btn btn-primary btn-lg next-bt">Next</button>
           </div>
+          <div>
+            <button className="btn btn-secondary btn-lg list-bt">
+              <i className="bi bi-list-task" />
+            </button>
+          </div>
+          <div>
+            <button className="btn btn-secondary btn-lg img-bt">
+              <i className="bi bi-image" />
+            </button>
+          </div>
         </div>
       </div>
+      {tag}
     </div>
   );
 }

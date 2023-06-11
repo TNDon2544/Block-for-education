@@ -41,7 +41,7 @@
   color: #333;
 }
 
-.line {
+.line-create {
   color: #a09e9e;
   margin-top: 0;
   margin-bottom: 0;
@@ -81,12 +81,46 @@
   font-weight: bold;
 }
 
+.tag {
+  color: #4a7dfd;
+  background-color: #ebe8e8;
+  font-weight: bold;
+}
+
+.tag:hover {
+  color: #4a7dfd;
+  background-color: #dbd9d9;
+  font-weight: bold;
+}
+
+.tag-position {
+  position: relative;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
 .next-bt {
- position: absolute;
- right: 20px;
- bottom: 13px;
- border-radius: 15px;
- width: 120px;
+  position: absolute;
+  right: 20px;
+  bottom: 13px;
+  border-radius: 15px;
+  width: 120px;
+}
+
+.list-bt {
+  position: absolute;
+  left: 20px;
+  bottom: 13px;
+  border-radius: 15px;
+  width: 90px;
+}
+
+.img-bt {
+  position: absolute;
+  left: 120px;
+  bottom: 13px;
+  border-radius: 15px;
+  width: 90px;
 }
 
 .image-create-post {
@@ -128,4 +162,3 @@
   font-weight: bold;
   color: #999;
 }
-
