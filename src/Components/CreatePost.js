@@ -1,14 +1,38 @@
 import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import DataUser from "../Data/DataUser";
+import Multiselect from "multiselect-react-dropdown";
 import "./CreatePost.css";
-import Tag from "./Tag";
 
 export default function CreatePost(props) {
   const { closeCreatePost } = props;
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
-  const [isTagOpen, setIsTagOpen] = useState(false);
+  const [selectedTags, setSelectedTags] = useState([]);
+
+  const tagOptions = [
+    "DIGITAL CIRCUIT AND LOGIC",
+    "DATA COMMUNICATION AND NETWORK",
+    "OBJECT ORIENTED PROGRAMMING",
+    "DATABASE DESIGN AND APPLICATION",
+    "MICROCONTROLLER SYSTEMS",
+    "ARTIFICIAL INTELLIGENCE",
+    "COMPUTER ARCHITECTURE",
+    "DATA STRUCTURE AND ALGORITHM",
+    "COMPUTER NETWORK SYSTEM",
+    "WEB APPLICATION DEVELOPMENT",
+    "EMBEDDED CONTROL SYSTEM",
+    "DISCRETE MATHEMATICS",
+    "OPERATING SYSTEM",
+    "MOBILE AND CLOUD COMPUTING",
+    "NETWORK SECURITY",
+    "SELECTED TOPICS IN COMPUTER",
+    "WIRELESS COMMUNICATION",
+  ];
+
+  const handleTagSelect = (selectedList) => {
+    setSelectedTags(selectedList);
+  };
   /* ดึงโปรไฟล์เจ้าของโพส */
   const UserProfile = DataUser.find((profile) => profile.UserId === "don2544");
   /* อ้างอิงปุ่มกับ input */
@@ -23,10 +47,6 @@ export default function CreatePost(props) {
   /* ส่งค่ารูปที่เลือกไปเก็บไว้ใน images */
   function onImageChange(e) {
     setImages([...e.target.files]);
-  }
-  let tag = null;
-  if (isTagOpen) {
-    tag = <Tag closeTag={() => setIsTagOpen(false)} />;
   }
   /* เปิด pop up จะไม่สามารถเลื่อนหน้าเพจหลัง pop up  */
   useEffect(() => {
@@ -57,6 +77,10 @@ export default function CreatePost(props) {
           <div className="d-flex justify-content-center">
             <div className="head-create">
               <h3>Create Post</h3>
+              <i
+                className="bi bi-x-lg close-create"
+                onClick={closeCreatePost}
+              />
             </div>
           </div>
           <hr className="line-create" />
@@ -113,7 +137,26 @@ export default function CreatePost(props) {
               />
             </form>
             <div className="tag-position">
-              <button className="btn btn-lg tag" onClick={() => setIsTagOpen(true)}>+ Tag</button>
+              <Multiselect
+                isObject={false}
+                options={tagOptions}
+                selectedValues={selectedTags}
+                onSelect={handleTagSelect}
+                onRemove={handleTagSelect}
+                placeholder="Select Tag"
+                selectionLimit={2}
+                style={{
+                  chips: {
+                    fontSize: "14px",
+                    marginBottom: "20px",
+                  },
+                  searchBox: {
+                    border: "none",
+                    borderBottom: "1px solid #a09e9e",
+                    borderRadius: "0px",
+                  },
+                }}
+              />
             </div>
             <div className="input-position">
               <textarea
@@ -129,23 +172,17 @@ export default function CreatePost(props) {
               />
             </div>
           </div>
-          <hr className="line" />
+          <hr className="line-create" />
           <div>
-            <button className="btn btn-primary btn-lg next-bt">Next</button>
+            <button className="btn btn-primary btn-lg post-bt">Post</button>
           </div>
           <div>
-            <button className="btn btn-secondary btn-lg list-bt">
-              <i className="bi bi-list-task" />
-            </button>
-          </div>
-          <div>
-            <button className="btn btn-secondary btn-lg img-bt">
-              <i className="bi bi-image" />
+            <button className="btn btn-primary btn-lg add-column-bt">
+              Add Column
             </button>
           </div>
         </div>
       </div>
-      {tag}
     </div>
   );
 }

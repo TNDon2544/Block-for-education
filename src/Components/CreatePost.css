@@ -81,25 +81,15 @@
   font-weight: bold;
 }
 
-.tag {
-  color: #4a7dfd;
-  background-color: #ebe8e8;
-  font-weight: bold;
-}
-
-.tag:hover {
-  color: #4a7dfd;
-  background-color: #dbd9d9;
-  font-weight: bold;
-}
-
 .tag-position {
-  position: relative;
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 18px;
 }
 
-.next-bt {
+.post-bt {
   position: absolute;
   right: 20px;
   bottom: 13px;
@@ -107,20 +97,12 @@
   width: 120px;
 }
 
-.list-bt {
+.add-column-bt {
   position: absolute;
   left: 20px;
   bottom: 13px;
   border-radius: 15px;
-  width: 90px;
-}
-
-.img-bt {
-  position: absolute;
-  left: 120px;
-  bottom: 13px;
-  border-radius: 15px;
-  width: 90px;
+  width: 145px;
 }
 
 .image-create-post {
@@ -135,6 +117,15 @@
   right: 15px;
   top: 10px;
   font-size: 25px;
+  cursor: pointer;
+}
+
+.close-create {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  font-size: 25px;
+  color: black;
   cursor: pointer;
 }
 
