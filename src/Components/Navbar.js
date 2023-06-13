@@ -13,19 +13,19 @@ function CollapsibleExample() {
   /* สร้าง useState เพื่อใช้เปิดปิด pop up Search CreatePost */
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
-    /*  ส่ง props ปิด pop up ไปให้ Search CreatePost  */
+  /*  ส่ง props ปิด pop up ไปให้ Search CreatePost  */
   let search = null;
   if (isSearchOpen) {
     search = <Search closeSearch={() => setIsSearchOpen(false)} />;
   }
   let createPost = null;
   if (isCreatePostOpen) {
-    createPost = <CreatePost closeCreatePost={() => setIsCreatePostOpen(false)} />;
+    createPost = (
+      <CreatePost closeCreatePost={() => setIsCreatePostOpen(false)} />
+    );
   }
-    /*  กำหนดหน้าโปรไฟล์ ของผู้ใช้ที่ login (ถ้าทำระบบ login แล้วค่อยเปลี่ยนเงื่อนไขตรง === "don2544") */
-  const UserProfile = DataUser.find(
-    (profile) => profile.UserId === "don2544"
-  );
+  /*  กำหนดหน้าโปรไฟล์ ของผู้ใช้ที่ login (ถ้าทำระบบ login แล้วค่อยเปลี่ยนเงื่อนไขตรง === "don2544") */
+  const UserProfile = DataUser.find((profile) => profile.UserId === "don2544");
 
   return (
     <Navbar className="nav-position" expand="lg" bg="primary" variant="dark">
@@ -46,12 +46,18 @@ function CollapsibleExample() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-white link-hover" onClick={() => setIsCreatePostOpen(true)}>
+              <Link
+                className="nav-link text-white link-hover"
+                onClick={() => setIsCreatePostOpen(true)}
+              >
                 Create Post
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-white link-hover" to={`/${UserProfile.UserId}`}>
+              <Link
+                className="nav-link text-white link-hover"
+                to={`/${UserProfile.UserId}`}
+              >
                 Profile
               </Link>
             </li>

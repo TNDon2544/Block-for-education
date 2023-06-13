@@ -8,6 +8,7 @@ export default function PagePost() {
   let { postId } = useParams();
   /* เอา posts มาหาว่าเท่ากับ postId ที่ส่งมาจาก useParams ไหมเพื่อจะลิ้งไปหน้าบทความนั้นๆ  */
   const post = posts.find((p) => p.postId === Number(postId));
+  const allTag = post.tag;
   window.scrollTo(0, 0);
   /* เอา DataUser มาหาว่าเท่ากับ UserId ของ post ไหมเพื่อจะได้ดึงโปรไฟล์คนเขียนบทความมาใช้  */
   const UserProfile = DataUser.find(
@@ -31,6 +32,7 @@ export default function PagePost() {
       );
     }
   }
+
   return (
     <div>
       <Navbar />
@@ -57,6 +59,18 @@ export default function PagePost() {
             </div>
             <div className="content">{post.content}</div>
             {listItems}
+            <div className="tag-position-page">
+              {allTag.map((tag, index) => (
+                <Link
+                  className="btn btn-sm tag-bt"
+                  to={`/home?tag=${encodeURIComponent(tag)}`}
+                  key={index}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {tag}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

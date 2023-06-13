@@ -133,3 +133,17 @@
   right: 20px;
   font-size: 15px;
 }
+
+.tag-home {
+  margin-bottom: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 18px;
+}
+
+.warning-message-home {
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #999;
+}
