@@ -1,0 +1,86 @@
+.comment-popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.comment-popup-bg {
+  background-color: rgba(0, 0, 0, 0.803);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.comment-popup-card {
+  position: relative;
+  width: 700px;
+  height: 700px;
+  background: #f5f7f8;
+  border-radius: 30px;
+  margin-bottom: auto;
+  margin-top: auto;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+  overflow: auto;
+}
+
+.main-comment {
+  height: 540px;
+  overflow: auto;
+  padding: 20px;
+}
+
+.head-comment {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #333;
+}
+
+.line-comment {
+  color: #a09e9e;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.close-comment {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  font-size: 25px;
+  color: black;
+  cursor: pointer;
+}
+
+.box-text-comment {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  column-gap: 20px;
+  justify-items: center;
+}
+
+.comment-input {
+  width: 100%;
+  margin-top: 15px;
+  margin-left: 40px;
+}
+
+.comment-bt {
+  margin-top: 15px;
+}
+
+.all-comment-card {
+  background: white;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  width: fit-content;
+  box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);
+}

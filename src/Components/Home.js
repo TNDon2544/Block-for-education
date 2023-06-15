@@ -5,12 +5,12 @@ import Multiselect from "multiselect-react-dropdown";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { useEffect, useState } from "react";
+import DataUser from "../Data/DataUser";
 
 export default function Home() {
   const [selectedTags, setSelectedTags] = useState([]);
   const [Data, setData] = useState([]);
   const location = useLocation();
-
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const tag = searchParams.get("tag");
@@ -19,7 +19,7 @@ export default function Home() {
       console.log("Tag:", tag);
       // Remove the tag from the URL
       searchParams.delete("tag");
-      const newUrl = window.location.pathname + "?" + searchParams.toString();
+      const newUrl = window.location.pathname + searchParams.toString();
       window.history.replaceState(null, "", newUrl);
     } else {
       setSelectedTags([]);
@@ -32,7 +32,7 @@ export default function Home() {
   });
 
   console.log("selectedTags:", selectedTags);
-  
+
   useEffect(() => {
     (async () => {
       await getdata();
@@ -154,47 +154,64 @@ export default function Home() {
   if (selectedTags.length === 0) {
     tagfound = (
       <div className="band">
-        {Data.map((post) => (
-          <Link className="card" key={post.postId} to={`/home/${post.postId}`}>
-            {" "}
-            {/* ตรวจสอบว่าใช้โพสตัวเองไหมถ้าใช่จะเปลี่ยนปุ่ม ThreeDot */}
-            {post.UserId === "don2544" ? myThreeDot : threeDot}
-            <div
-              className="thumb"
-              style={{ backgroundImage: `url(${post.thumbUrl})` }}
-            />
-            <article>
-              <h1 className="title">{post.title}</h1>
-              <span className="span">
-                {post.userName}
-                <i className="bi bi-suit-heart icon-heart">&nbsp;{post.like}</i>
-              </span>
-            </article>
-          </Link>
-        ))}
+        {Data.map((post) => {
+          /* ดึง userName มาจากตาราง DataUser */
+          const userData = DataUser.find((user) => user.UserId === post.UserId);
+          return (
+            <Link
+              className="card"
+              key={post.postId}
+              to={`/home/${post.postId}`}
+            >
+              {/* ตรวจสอบว่าใช้โพสตัวเองไหมถ้าใช่จะเปลี่ยนปุ่ม ThreeDot */}
+              {post.UserId === "don2544" ? myThreeDot : threeDot}
+              <div
+                className="thumb"
+                style={{ backgroundImage: `url(${post.thumbUrl})` }}
+              />
+              <article>
+                <h1 className="title">{post.title}</h1>
+                <span className="span">
+                  {userData.userName}
+                  <i className="bi bi-suit-heart icon-heart">
+                    &nbsp;{post.like}
+                  </i>
+                </span>
+              </article>
+            </Link>
+          );
+        })}
       </div>
     );
   } else if (filteredTag.length > 0) {
     tagfound = (
       <div className="band">
-        {filteredTag.map((post) => (
-          <Link className="card" key={post.postId} to={`/home/${post.postId}`}>
-            {" "}
-            {/* ตรวจสอบว่าใช้โพสตัวเองไหมถ้าใช่จะเปลี่ยนปุ่ม ThreeDot */}
-            {post.UserId === "don2544" ? myThreeDot : threeDot}
-            <div
-              className="thumb"
-              style={{ backgroundImage: `url(${post.thumbUrl})` }}
-            />
-            <article>
-              <h1 className="title">{post.title}</h1>
-              <span className="span">
-                {post.userName}
-                <i className="bi bi-suit-heart icon-heart">&nbsp;{post.like}</i>
-              </span>
-            </article>
-          </Link>
-        ))}
+        {filteredTag.map((post) => {
+          const userData = DataUser.find((user) => user.UserId === post.UserId);
+          return (
+            <Link
+              className="card"
+              key={post.postId}
+              to={`/home/${post.postId}`}
+            >
+              {/* ตรวจสอบว่าใช้โพสตัวเองไหมถ้าใช่จะเปลี่ยนปุ่ม ThreeDot */}
+              {post.UserId === "don2544" ? myThreeDot : threeDot}
+              <div
+                className="thumb"
+                style={{ backgroundImage: `url(${post.thumbUrl})` }}
+              />
+              <article>
+                <h1 className="title">{post.title}</h1>
+                <span className="span">
+                  {userData.userName}
+                  <i className="bi bi-suit-heart icon-heart">
+                    &nbsp;{post.like}
+                  </i>
+                </span>
+              </article>
+            </Link>
+          );
+        })}
       </div>
     );
   } else {
