@@ -34,7 +34,7 @@ const DataUser = [
   {
     UserId: "pwit",
     imgUser:
-      "https://scontent.fbkk5-5.fna.fbcdn.net/v/t39.30808-6/306832006_3008529085959366_7792328040177566308_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeEgkggwPc_pNbyKOu26NKHuazbXViwODkhrNtdWLA4OSPRAzcwy9mLyOutBpnuz2sUhP1sKhGrRrlpkn_DYcM4f&_nc_ohc=RGmqTqWdGwcAX_njOLC&_nc_ht=scontent.fbkk5-5.fna&oh=00_AfB57vmzjuaTDo7WSpvsXhEMxZmSLxdDTy4FknNGAyBd_g&oe=64244700",
+      "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
     userName: "Lanta Pwit",
     Followers: 4,
     Following: 2,

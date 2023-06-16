@@ -131,7 +131,7 @@ export default function AllProfile() {
                 <article>
                   <h1 className="title-profile">{post.title}</h1>
                   <span className="span-profile">
-                    {post.userName}
+                    {user.userName}
                     <i className="bi bi-suit-heart icon-heart-profile">
                       &nbsp;{post.like}
                     </i>
@@ -200,7 +200,7 @@ export default function AllProfile() {
               <article>
                 <h1 className="title-profile">{post.title}</h1>
                 <span className="span-profile">
-                  {post.userName}
+                  {user.userName}
                   <i className="bi bi-suit-heart icon-heart-profile">
                     &nbsp;{post.like}
                   </i>

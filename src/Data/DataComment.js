@@ -4,7 +4,7 @@ const DataComment = {
       commentId: 1,
       UserId: "don2544",
       date: "2 มกราคม 2566",
-      comment: "This is a great blog post!",
+      comment: "This is a great blog post! ",
     },
     {
       commentId: 2,
@@ -14,9 +14,21 @@ const DataComment = {
     },
     {
       commentId: 3,
-      UserId: "bon456",
+      UserId: "pwit",
       date: "2 มกราคม 2566",
       comment: "Wow",
+    },
+    {
+      commentId: 4,
+      UserId: "sunan",
+      date: "2 มกราคม 2566",
+      comment: "I like it",
+    },
+    {
+      commentId: 5,
+      UserId: "sakchai458",
+      date: "2 มกราคม 2566",
+      comment: "This is a great blog",
     },
     
   ],

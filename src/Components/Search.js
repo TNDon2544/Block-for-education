@@ -46,31 +46,34 @@ export default function Search(props) {
         </div>
         <div className="post-box">
           <div className="band-search">
-            {filteredPosts.map((post) => (
-              <Link
-                className="card-search"
-                key={post.postId}
-                to={`/home/${post.postId}`}
-                onClick={closeSearch}
-              >
-                <div
-                  className="thumb-search"
-                  style={{ backgroundImage: `url(${post.thumbUrl})` }}
-                />
-                <article>
-                  <h1 className="title-search">{post.title}</h1>
-                  <span className="span-search">
-                    {post.userName}
-                    <i className="bi bi-suit-heart icon-heart-search">
-                      &nbsp;{post.like}
-                    </i>
-                  </span>
-                </article>
-              </Link>
-            ))}
+            {filteredPosts.map((post) => {
+              const userData = DataUser.find((user) => user.UserId === post.UserId);
+              return (
+                <Link
+                  className="card-search"
+                  key={post.postId}
+                  to={`/home/${post.postId}`}
+                  onClick={closeSearch}
+                >
+                  <div
+                    className="thumb-search"
+                    style={{ backgroundImage: `url(${post.thumbUrl})` }}
+                  />
+                  <article>
+                    <h1 className="title-search">{post.title}</h1>
+                    <span className="span-search">
+                      {userData.userName}
+                      <i className="bi bi-suit-heart icon-heart-search">
+                        &nbsp;{post.like}
+                      </i>
+                    </span>
+                  </article>
+                </Link>
+              );
+            })}
           </div>
         </div>
-
+    
         <div className="found">
           <h4>{filteredUser.length} Users found</h4>
         </div>
@@ -89,9 +92,7 @@ export default function Search(props) {
                 />
                 <article>
                   <h1 className="title-search">{user.userName}</h1>
-                  <span className="span-search">
-                    {user.Followers} Followers
-                  </span>
+                  <span className="span-search">{user.Followers} Followers</span>
                 </article>
               </Link>
             ))}
@@ -99,6 +100,7 @@ export default function Search(props) {
         </div>
       </div>
     );
+    
   }
   return (
     <div className="search-popup">

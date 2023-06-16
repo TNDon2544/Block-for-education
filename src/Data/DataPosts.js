@@ -57,6 +57,7 @@ const posts = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     ],
     img: [],
+    like: 8,
 
     tag: ["DIGITAL CIRCUIT AND LOGIC", "WIRELESS COMMUNICATION"],
   },

@@ -25,18 +25,22 @@ export default function Comment(props) {
       const userData = DataUser.find((user) => user.UserId === comment.UserId);
       return (
         <div key={comment.commentId} className="all-comment-card">
-          <Link className="" to={`/${comment.UserId}`}>
-            <p>{userData.userName}</p>
+          <Link to={`/${comment.UserId}`}>
+            <img className="user-img-comment" src={userData.imgUser} alt="" />
           </Link>
-          <h6>{comment.comment}</h6>
-          <p>{comment.date}</p>
+          <Link className="Link-comment" to={`/${comment.UserId}`}>
+            <h6>{userData.userName}</h6>
+          </Link>
+          <p className="comment-p">{comment.comment}</p>
+          <h6 className="date-comment">{comment.date}</h6>
         </div>
       );
     });
   } else {
     commentList = (
-      <div>
-        <p>Not Found Comment</p>
+      <div className="warning-message-comment">
+        <i className="bi bi-chat-left-dots-fill chat-icon-comment"></i>
+        <h4> No comments yet. </h4>
       </div>
     );
   }
