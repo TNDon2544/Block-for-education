@@ -80,12 +80,7 @@ export default function Login() {
                   >
                     <i className="bi bi-google"> SIGN IN WITH GOOGLE</i>
                   </button>
-                  <button
-                    className="btn btn-lg btn-block btn-primary border-0 btn-facebook"
-                    type="submit"
-                  >
-                    <i className="bi bi-facebook"> SIGN IN WITH FACEBOOK</i>
-                  </button>
+                  
                 </div>
               </div>
             </div>

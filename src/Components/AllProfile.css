@@ -184,6 +184,9 @@
   box-shadow: none;
 }
 
+.card-profile:hover .Three-dots svg {
+  visibility: visible;
+}
 
 .Three-dots-profile {
   position: absolute;

@@ -10,9 +10,6 @@ export default function PagePost() {
   /* เอา posts มาหาว่าเท่ากับ postId ที่ส่งมาจาก useParams ไหมเพื่อจะลิ้งไปหน้าบทความนั้นๆ  */
   const post = posts.find((p) => p.postId === Number(postId));
   const allTag = post.tag;
-  const img = post.img;
-  const list = post.list;
-  const maxLength = Math.max(img.length, list.length);
   const [isCommentOpen, setIsCommentOpen] = useState(false);
 
   useEffect(() => {
@@ -32,18 +29,24 @@ export default function PagePost() {
     (profile) => profile.UserId === post.UserId
   );
 
-  const listItem = (
-    <div>
-      {Array.from({ length: maxLength }).map((_, index) => (
+  /* เช็คว่าในดาต้าเบสตอนเพิ่ม list มีรูปหรือมีข้อความมาไหมถ้าไม่มีก็ใส่ null ถ้ามีก็ใส่ตามเงื่อนไข ข้อมูลที่ใส่จะใส่เข้าไปใน listItems */
+  const listItems = [];
+  for (let index = 1; index <= 3; index++) {
+    const img = post[`img${index}`];
+    const list = post[`list${index}`];
+    if (list || img) {
+      const content = list ? <div className="content">{list}</div> : null;
+      const image = img ? (
+        <img className="image-content" src={img} alt="" />
+      ) : null;
+      listItems.push(
         <div key={index}>
-          {img[index] && (
-            <img className="image-content" src={img[index]} alt="" />
-          )}
-          {list[index] && <div className="content">{list[index]}</div>}
+          {image}
+          {content}
         </div>
-      ))}
-    </div>
-  );
+      );
+    }
+  }
 
   return (
     <div>
@@ -84,7 +87,7 @@ export default function PagePost() {
               <h4>{post.title}</h4>
             </div>
             <div className="content">{post.content}</div>
-            {listItem}
+            {listItems}
             <div className="tag-position-page">
               {allTag.map((tag, index) => (
                 <Link

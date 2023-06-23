@@ -26,13 +26,6 @@ export default function Home() {
     }
   }, [location]);
 
-  /* ค้นหา tag */
-  const filteredTag = Data.filter((post) => {
-    return post.tag.some((tag) => selectedTags.includes(tag));
-  });
-
-  console.log("selectedTags:", selectedTags);
-
   useEffect(() => {
     (async () => {
       await getdata();
@@ -40,7 +33,7 @@ export default function Home() {
   }, []);
 
   const getdata = async () => {
-    await fetch("http://localhost:3000/", {
+    await fetch("http://localhost:3001/api/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -48,10 +41,22 @@ export default function Home() {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
-        setData(result);
+        console.log("Before Data: ", result.Result);
+        setData(result.Result);
       });
   };
+
+  if (!Data) {
+    return <p>Loading...</p>;
+  }
+  console.log("Data: ", Data);
+
+  /* ค้นหา tag */
+  const filteredTag = Data.filter((post) => {
+    return post.tag.some((tag) => selectedTags.includes(tag));
+  });
+
+  console.log("selectedTags:", selectedTags);
 
   const tagOptions = [
     "DIGITAL CIRCUIT AND LOGIC",
@@ -98,12 +103,6 @@ export default function Home() {
       >
         <Dropdown.Item as="div">
           <div>
-            <i className="bi bi-bookmark icon-home" />
-            &nbsp; Add Bookmark
-          </div>
-        </Dropdown.Item>
-        <Dropdown.Item as="div">
-          <div>
             <i className="bi bi-pencil icon-home" />
             &nbsp; Edit
           </div>
@@ -133,12 +132,6 @@ export default function Home() {
           </svg>
         }
       >
-        <Dropdown.Item as="div">
-          <div>
-            <i className="bi bi-bookmark icon-home" />
-            &nbsp; Add Bookmark
-          </div>
-        </Dropdown.Item>
         <Dropdown.Item as="div">
           <div>
             <i className="bi bi-exclamation-square icon-home" />
@@ -243,6 +236,8 @@ export default function Home() {
                   fontSize: "18px",
                 },
                 multiselectContainer: {
+                  width: "60%",
+
                   maxWidth: "1240px",
                   margin: "0 auto",
                 },

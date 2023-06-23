@@ -9,31 +9,6 @@ export default function CreatePost(props) {
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
-  const [columns, setColumns] = useState([{ list: [], img: [] }]);
-
-  const addColumn = () => {
-    setColumns([...columns, { list: [], img: [] }]);
-  };
-
-  const deleteColumn = (index) => {
-    const newColumns = [...columns];
-    newColumns.splice(index, 1);
-    setColumns(newColumns);
-  };
-
-  const handleColumnTextChange = (e, index) => {
-    const newColumns = [...columns];
-    newColumns[index].list = e.target.value;
-    setColumns(newColumns);
-  };
-
-  const handleColumnImageChange = (e, index) => {
-    const file = e.target.files[0];
-    const imageURL = URL.createObjectURL(file);
-    const newColumns = [...columns];
-    newColumns[index].img.push(imageURL);
-    setColumns(newColumns);
-  };
 
   const tagOptions = [
     "DIGITAL CIRCUIT AND LOGIC",
@@ -196,40 +171,12 @@ export default function CreatePost(props) {
                 placeholder="Content"
               />
             </div>
-            {columns.map((column, index) => (
-              <div key={index} className="columns">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleColumnImageChange(e, index)}
-                />
-                <textarea
-                  className="form-control content-input"
-                  placeholder="Content"
-                  value={column.list}
-                  onChange={(e) => handleColumnTextChange(e, index)}
-                />
-                <button
-                  className="btn btn-primary btn-lg"
-                  onClick={() => deleteColumn(index)}
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
           </div>
           <hr className="line-create" />
           <div>
             <button className="btn btn-primary btn-lg post-bt">Post</button>
           </div>
-          <div>
-            <button
-              className="btn btn-primary btn-lg add-column-bt"
-              onClick={addColumn}
-            >
-              Add Column
-            </button>
-          </div>
+          <div></div>
         </div>
       </div>
     </div>
