@@ -5,11 +5,11 @@ import Multiselect from "multiselect-react-dropdown";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { useEffect, useState } from "react";
-import DataUser from "../Data/DataUser";
 
 export default function Home() {
   const [selectedTags, setSelectedTags] = useState([]);
   const [Data, setData] = useState([]);
+  const [DataUser, setDataUesr] = useState([]);
   const location = useLocation();
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -28,12 +28,13 @@ export default function Home() {
 
   useEffect(() => {
     (async () => {
+      await getdataUser();
       await getdata();
     })();
   }, []);
 
   const getdata = async () => {
-    await fetch("http://localhost:3001/api/get", {
+    await fetch("http://localhost:3001/api/getdataPost", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -41,15 +42,32 @@ export default function Home() {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log("Before Data: ", result.Result);
+        // console.log("Before Data: ", result.Result);
         setData(result.Result);
+      });
+  };
+
+  const getdataUser = async () => {
+    await fetch("http://localhost:3001/api/GetDataUser", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log("Before DataUser: ", result.Result);
+        setDataUesr(result.Result);
       });
   };
 
   if (!Data) {
     return <p>Loading...</p>;
   }
-  console.log("Data: ", Data);
+  if (!DataUser) {
+    return <p>Loading...</p>;
+  }
+  // console.log("Data: ", Data);
 
   /* ค้นหา tag */
   const filteredTag = Data.filter((post) => {
@@ -153,14 +171,14 @@ export default function Home() {
           return (
             <Link
               className="card"
-              key={post.postId}
-              to={`/home/${post.postId}`}
+              key={post.postID}
+              to={`/home/${post.postID}`}
             >
               {/* ตรวจสอบว่าใช้โพสตัวเองไหมถ้าใช่จะเปลี่ยนปุ่ม ThreeDot */}
               {post.UserId === "don2544" ? myThreeDot : threeDot}
               <div
                 className="thumb"
-                style={{ backgroundImage: `url(${post.thumbUrl})` }}
+                style={{ backgroundImage: `url(${post.thumbURL})` }}
               />
               <article>
                 <h1 className="title">{post.title}</h1>
@@ -184,14 +202,14 @@ export default function Home() {
           return (
             <Link
               className="card"
-              key={post.postId}
-              to={`/home/${post.postId}`}
+              key={post.postID}
+              to={`/home/${post.postID}`}
             >
               {/* ตรวจสอบว่าใช้โพสตัวเองไหมถ้าใช่จะเปลี่ยนปุ่ม ThreeDot */}
               {post.UserId === "don2544" ? myThreeDot : threeDot}
               <div
                 className="thumb"
-                style={{ backgroundImage: `url(${post.thumbUrl})` }}
+                style={{ backgroundImage: `url(${post.thumbURL})` }}
               />
               <article>
                 <h1 className="title">{post.title}</h1>

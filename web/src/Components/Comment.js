@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Comment.css";
-import DataComment from "../Data/DataComment";
 import { Link } from "react-router-dom";
-import DataUser from "../Data/DataUser";
 export default function Comment(props) {
   const { closeComment } = props;
   const { postId } = props;
+  const [DataComment, setDataComment] = useState([]);
+  const [DataUser, setDataUesr] = useState([]);
 
   /* เปิด pop up จะไม่สามารถเลื่อนหน้าเพจหลัง pop up  */
   useEffect(() => {
@@ -16,7 +16,48 @@ export default function Comment(props) {
   }, []);
 
   const comments = DataComment[postId];
-  console.log("comments:", comments);
+  // console.log("comments:", comments);
+
+  useEffect(() => {
+    (async () => {
+      await getdataUser();
+      await getdata();
+    })();
+  }, []);
+
+  const getdata = async () => {
+    await fetch("http://localhost:3001/api/GetDataComment", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        // console.log("Before Data: ", result.Result);
+        setDataComment(result.Result);
+      });
+  };
+  const getdataUser = async () => {
+    await fetch("http://localhost:3001/api/GetDataUser", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        // console.log("Before DataUser: ", result.Result);
+        setDataUesr(result.Result);
+      });
+  };
+
+  if (!DataComment) {
+    return <p>Loading...</p>;
+  }
+  if (!DataUser) {
+    return <p>Loading...</p>;
+  }
 
   let commentList;
   if (comments) {
@@ -24,16 +65,20 @@ export default function Comment(props) {
       /* ดึง userName มาจากตาราง DataUser */
       const userData = DataUser.find((user) => user.UserId === comment.UserId);
       return (
-        <div key={comment.commentId} className="all-comment-card">
-          <Link to={`/${comment.UserId}`}>
-            <img className="user-img-comment" src={userData.imgUser} alt="" />
-          </Link>
-          <Link className="Link-comment" to={`/${comment.UserId}`}>
-            <h6>{userData.userName}</h6>
-          </Link>
-          <p className="comment-p">{comment.comment}</p>
-          <h6 className="date-comment">{comment.date}</h6>
-        </div>
+            <div key={comment.commentId} className="all-comment-card">
+              <Link to={`/${comment.UserId}`}>
+                <img
+                  className="user-img-comment"
+                  src={userData.imgUser}
+                  alt=""
+                />
+              </Link>
+              <Link className="Link-comment" to={`/${comment.UserId}`}>
+                <h6>{userData.userName}</h6>
+              </Link>
+              <p className="comment-p">{comment.comment}</p>
+              {/* <h6 className="date-comment">{comment.date}</h6> */}
+            </div>
       );
     });
   } else {

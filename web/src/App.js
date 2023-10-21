@@ -15,7 +15,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
         <Route path="/home">
-          <Route path=":postId" element={<PagePost />} />
+          <Route path=":postID" element={<PagePost />} />
         </Route>
         <Route path="">
           <Route path=":UserId" element={<AllProfile />} />
