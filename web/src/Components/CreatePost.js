@@ -6,9 +6,20 @@ import "./CreatePost.css";
 
 export default function CreatePost(props) {
   const { closeCreatePost } = props;
-  const [images, setImages] = useState([]);
-  const [imageURLs, setImageURLs] = useState([]);
+  const [thumbnail, setThumbnail] = useState([]);
+  const [thumbnailURLs, setThumbnailURLs] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [img1, setImg1] = useState([]);
+  const [imgURLs1, setImgURLs1] = useState([]);
+  const [img2, setImg2] = useState([]);
+  const [imgURLs2, setImgURLs2] = useState([]);
+  const [img3, setImg3] = useState([]);
+  const [imgURLs3, setImgURLs3] = useState([]);
+  const [list1, setList1] = useState("");
+  const [list2, setList2] = useState("");
+  const [list3, setList3] = useState("");
 
   const tagOptions = [
     "DIGITAL CIRCUIT AND LOGIC",
@@ -37,17 +48,39 @@ export default function CreatePost(props) {
   const UserProfile = DataUser.find((profile) => profile.UserId === "don2544");
   /* อ้างอิงปุ่มกับ input */
   const fileInputRef = useRef(null);
+  const img1Ref = useRef(null);
+  const img2Ref = useRef(null);
+  const img3Ref = useRef(null);
+
   /* ส่งค่ารูปที่เลือกไปเก็บใน imageURLs เพื่อจะใช้แสดงภาพที่เลือก*/
   useEffect(() => {
-    if (images.length < 1) return;
+    if (thumbnail.length < 1) return;
     const newImageUrls = [];
-    images.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
-    setImageURLs(newImageUrls);
-  }, [images]);
-  /* ส่งค่ารูปที่เลือกไปเก็บไว้ใน images */
-  function onImageChange(e) {
-    setImages([...e.target.files]);
-  }
+    thumbnail.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
+    setThumbnailURLs(newImageUrls);
+  }, [thumbnail]);
+
+  useEffect(() => {
+    if (img1.length < 1) return;
+    const newImageUrls = [];
+    img1.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
+    setImgURLs1(newImageUrls);
+  }, [img1]);
+
+  useEffect(() => {
+    if (img2.length < 1) return;
+    const newImageUrls = [];
+    img2.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
+    setImgURLs2(newImageUrls);
+  }, [img2]);
+
+  useEffect(() => {
+    if (img3.length < 1) return;
+    const newImageUrls = [];
+    img3.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
+    setImgURLs3(newImageUrls);
+  }, [img3]);
+
   /* เปิด pop up จะไม่สามารถเลื่อนหน้าเพจหลัง pop up  */
   useEffect(() => {
     document.documentElement.style.overflow = "hidden";
@@ -97,8 +130,8 @@ export default function CreatePost(props) {
               </div>
             </div>
             <form className="form-create">
-              {imageURLs.length > 0 ? (
-                imageURLs.map((imageSrc, index) => (
+              {thumbnailURLs.length > 0 ? (
+                thumbnailURLs.map((imageSrc, index) => (
                   <div
                     key={index}
                     className="image-create-post"
@@ -108,7 +141,7 @@ export default function CreatePost(props) {
                       <i
                         className="bi bi-x-circle-fill"
                         onClick={() => {
-                          setImageURLs([]);
+                          setThumbnailURLs([]);
                           fileInputRef.current.value = "";
                         }}
                       />
@@ -131,7 +164,9 @@ export default function CreatePost(props) {
                 type="file"
                 multiple
                 accept="image/*"
-                onChange={onImageChange}
+                onChange={(e) => {
+                  setThumbnail([...e.target.files]);
+                }}
                 style={{ display: "none" }}
                 ref={fileInputRef}
               />
@@ -161,6 +196,10 @@ export default function CreatePost(props) {
             <div className="input-position">
               <textarea
                 className="form-control title-input"
+                value={title}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
                 placeholder="Title"
                 rows="1"
               />
@@ -168,9 +207,179 @@ export default function CreatePost(props) {
             <div className="input-position">
               <textarea
                 className="form-control content-input"
+                value={content}
+                onChange={(e) => {
+                  setContent(e.target.value);
+                }}
                 placeholder="Content"
               />
             </div>
+
+            <div>
+              <form className="form-create">
+                {imgURLs1.length > 0 ? (
+                  imgURLs1.map((imageSrc, index) => (
+                    <div
+                      key={index}
+                      className="image-create-post"
+                      style={{ backgroundImage: `url(${imageSrc})` }}
+                    >
+                      <div className="close-bt">
+                        <i
+                          className="bi bi-x-circle-fill"
+                          onClick={() => {
+                            setImgURLs1([]);
+                            img1Ref.current.value = "";
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <button
+                    className="add-img"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      img1Ref.current.click();
+                    }}
+                  >
+                    Add Image1
+                  </button>
+                )}
+
+                <input
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={(e) => {
+                    setImg1([...e.target.files]);
+                  }}
+                  style={{ display: "none" }}
+                  ref={img1Ref}
+                />
+              </form>
+              <div className="input-position">
+                <textarea
+                  className="form-control content-input"
+                  value={list1}
+                  onChange={(e) => {
+                    setList1(e.target.value);
+                  }}
+                  placeholder="List1"
+                />
+              </div>
+            </div>
+
+            <div>
+              <form className="form-create">
+                {imgURLs2.length > 0 ? (
+                  imgURLs2.map((imageSrc, index) => (
+                    <div
+                      key={index}
+                      className="image-create-post"
+                      style={{ backgroundImage: `url(${imageSrc})` }}
+                    >
+                      <div className="close-bt">
+                        <i
+                          className="bi bi-x-circle-fill"
+                          onClick={() => {
+                            setImgURLs2([]);
+                            img2Ref.current.value = "";
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <button
+                    className="add-img"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      img2Ref.current.click();
+                    }}
+                  >
+                    Add Image2
+                  </button>
+                )}
+
+                <input
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={(e) => {
+                    setImg2([...e.target.files]);
+                  }}
+                  style={{ display: "none" }}
+                  ref={img2Ref}
+                />
+              </form>
+              <div className="input-position">
+                <textarea
+                  className="form-control content-input"
+                  value={list2}
+                  onChange={(e) => {
+                    setList2(e.target.value);
+                  }}
+                  placeholder="List2"
+                />
+              </div>
+            </div>
+
+            <div>
+              <form className="form-create">
+                {imgURLs3.length > 0 ? (
+                  imgURLs3.map((imageSrc, index) => (
+                    <div
+                      key={index}
+                      className="image-create-post"
+                      style={{ backgroundImage: `url(${imageSrc})` }}
+                    >
+                      <div className="close-bt">
+                        <i
+                          className="bi bi-x-circle-fill"
+                          onClick={() => {
+                            setImgURLs3([]);
+                            img3Ref.current.value = "";
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <button
+                    className="add-img"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      img3Ref.current.click();
+                    }}
+                  >
+                    Add Image3
+                  </button>
+                )}
+
+                <input
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={(e) => {
+                    setImg3([...e.target.files]);
+                  }}
+                  style={{ display: "none" }}
+                  ref={img3Ref}
+                />
+              </form>
+              <div className="input-position">
+                <textarea
+                  className="form-control content-input"
+                  value={list3}
+                  onChange={(e) => {
+                    setList3(e.target.value);
+                  }}
+                  placeholder="List3"
+                />
+              </div>
+            </div>
+
           </div>
           <hr className="line-create" />
           <div>
